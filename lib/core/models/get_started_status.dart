@@ -1,0 +1,1 @@
+enum GetStartedStatus { show, hide }
