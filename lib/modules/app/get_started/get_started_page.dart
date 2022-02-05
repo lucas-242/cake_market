@@ -32,7 +32,7 @@ class _GetStartedState extends State<GetStarted> {
         child: Stack(
           children: [
             Image.asset(
-              'assets/images/logo.png',
+              AppImages.logo,
               height: SizeConfig.height * 0.6,
             ),
             CustomPaint(

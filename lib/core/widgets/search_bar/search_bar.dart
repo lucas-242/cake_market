@@ -27,8 +27,7 @@ class SearchBar extends StatelessWidget {
     EdgeInsets? padding,
   })  : boxColor = boxColor ?? AppColors.input.withAlpha(100),
         textColor = textColor ?? AppColors.grey,
-        padding =
-            padding ?? const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+        padding = padding ?? const EdgeInsets.symmetric(horizontal: 25),
         super(key: key);
 
   @override
