@@ -25,7 +25,7 @@ class SearchBar extends StatelessWidget {
     Color? boxColor,
     Color? textColor,
     EdgeInsets? padding,
-  })  : boxColor = boxColor ?? AppColors.input.withAlpha(100),
+  })  : boxColor = boxColor ?? AppColors.white,
         textColor = textColor ?? AppColors.grey,
         padding = padding ?? const EdgeInsets.symmetric(horizontal: 25),
         super(key: key);
@@ -58,7 +58,7 @@ class SearchBar extends StatelessWidget {
                       left: 10, right: 10, bottom: 7, top: 5),
                   prefixIcon: const Icon(
                     Icons.search,
-                    color: AppColors.grey,
+                    color: AppColors.stroke,
                   ),
                 ),
               ),

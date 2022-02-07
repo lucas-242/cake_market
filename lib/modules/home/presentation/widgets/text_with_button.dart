@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class TextWithButton extends StatelessWidget {
   final String text;
+  final double fontSize;
   final VoidCallback onPressed;
   final Color? textColor;
   final Color? buttonColor;
@@ -12,6 +13,7 @@ class TextWithButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
+    this.fontSize = 20.0,
     this.textColor = AppColors.primary,
     this.buttonColor = AppColors.primary,
     this.icon = Icons.more_horiz,
@@ -24,7 +26,7 @@ class TextWithButton extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(fontSize: 18, color: textColor),
+          style: TextStyle(fontSize: fontSize, color: textColor),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 25),
