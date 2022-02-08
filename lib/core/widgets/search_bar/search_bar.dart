@@ -14,7 +14,7 @@ class SearchBar extends StatelessWidget {
   final EdgeInsets padding;
   final height = 55.0;
 
-  SearchBar({
+  const SearchBar({
     Key? key,
     this.label = 'Pesquise algo aqui',
     this.showFiltersButton = true,

@@ -1,6 +1,6 @@
 import 'package:cake/core/models/models.dart';
 import 'package:cake/modules/app/app.dart';
-import 'package:cake/modules/app/get_started/get_started_page.dart';
+import 'package:cake/modules/get_started/get_started.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
