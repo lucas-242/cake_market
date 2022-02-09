@@ -1,3 +1,4 @@
+import 'package:cake/core/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class CallText extends StatelessWidget {
@@ -15,7 +16,7 @@ class CallText extends StatelessWidget {
               'Busque e Encontre as',
               style: TextStyle(
                 fontSize: 32,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -33,7 +34,7 @@ class CallText extends StatelessWidget {
             ],
             style: TextStyle(
               fontSize: 32,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
         ),

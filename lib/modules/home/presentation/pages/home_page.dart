@@ -34,24 +34,24 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFCF5),
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               const NavbarSection(),
-              const SizedBox(height: 25),
-              SearchBar(
+              const SizedBox(height: DefaultStyle.heightSpace),
+              const SearchBar(
                 label: 'Pesquise uma delícia aqui',
               ),
               //* Height should be smaller to compensate the button padding
-              const SizedBox(height: 10),
+              const SizedBox(height: DefaultStyle.heightSmallSpace),
               RecomendedSection(
                 onPressedMore: () => print('aaaainn'),
                 recomended: recomended,
               ),
               //* Height should be smaller to compensate the button padding
-              const SizedBox(height: 10),
+              const SizedBox(height: DefaultStyle.heightSmallSpace),
               LastOrderSection(
                 onPressedMore: () => print('aaaaaaeeenn'),
                 orders: orders,

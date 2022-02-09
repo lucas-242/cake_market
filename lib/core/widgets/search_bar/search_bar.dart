@@ -26,8 +26,8 @@ class SearchBar extends StatelessWidget {
     Color? textColor,
     EdgeInsets? padding,
   })  : boxColor = boxColor ?? AppColors.white,
-        textColor = textColor ?? AppColors.grey,
-        padding = padding ?? const EdgeInsets.symmetric(horizontal: 25),
+        textColor = textColor ?? AppColors.inputText,
+        padding = padding ?? DefaultStyle.paddingHorizontal,
         super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class SearchBar extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: boxColor,
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderRadius: DefaultStyle.roundedTinyShapeRadius,
               ),
               child: TextField(
                 onSubmitted: onSubmitted,
@@ -54,18 +54,16 @@ class SearchBar extends StatelessWidget {
                   border: InputBorder.none,
                   hintText: label,
                   hintStyle: TextStyle(fontSize: 16, color: textColor),
-                  contentPadding: const EdgeInsets.only(
-                      left: 10, right: 10, bottom: 7, top: 5),
                   prefixIcon: const Icon(
                     Icons.search,
-                    color: AppColors.stroke,
+                    color: AppColors.inputText,
                   ),
                 ),
               ),
             ),
           ),
           if (showFiltersButton) ...[
-            const SizedBox(width: 20),
+            const SizedBox(width: DefaultStyle.widthSpace),
             RoundedIconButton(
               icon: Icons.tune,
               onPressed: () => onTapFilters,
@@ -75,37 +73,4 @@ class SearchBar extends StatelessWidget {
       ),
     );
   }
-
-  //TextFormField with rounded borders
-  // Container(
-  //   width: size.width / 1.4,
-  //   height: 50,
-  //   alignment: Alignment.center,
-  //   decoration: BoxDecoration(
-  //       color: Colors.grey[200],
-  //       borderRadius: BorderRadius.circular(40)),
-  //   child: Padding(
-  //     padding: EdgeInsets.only(left: 12),
-  //     child: TextField(
-  //       textCapitalization: TextCapitalization.sentences,
-  //       style: AppTextStyles.buttonGrey,
-  //       cursorHeight: 18,
-  //       cursorColor: AppColors.grey,
-  //       decoration: InputDecoration(
-  //         enabledBorder: InputBorder.none,
-  //         focusedBorder: InputBorder.none,
-  //         focusColor: Colors.grey[600],
-  //         isDense: true,
-  //         icon: Icon(
-  //           Icons.search,
-  //           size: 30,
-  //           color: AppColors.grey,
-  //         ),
-  //         hintText: "Procurando um livro específico?",
-  //         hintStyle: AppTextStyles.input,
-  //         counterStyle: AppTextStyles.buttonGrey,
-  //       ),
-  //     ),
-  //   ),
-  // ),
 }

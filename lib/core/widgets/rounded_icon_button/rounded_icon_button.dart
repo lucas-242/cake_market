@@ -16,7 +16,7 @@ class RoundedIconButton extends StatelessWidget {
     this.height,
     this.width,
     this.backgroundColor = AppColors.primary,
-    this.color = AppColors.stroke,
+    this.color = AppColors.white,
   }) : super(key: key);
 
   @override
@@ -24,12 +24,12 @@ class RoundedIconButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: width ?? SizeConfig.blockSizeHorizontal * 14,
-        height: height ?? SizeConfig.blockSizeHorizontal * 14,
+        width: width ?? DefaultStyle.buttonWidth,
+        height: height ?? DefaultStyle.buttonHeight,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(18.0),
+          borderRadius: DefaultStyle.roundedTinyShapeRadius,
         ),
         child: Icon(icon, color: color),
       ),

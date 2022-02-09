@@ -15,7 +15,8 @@ class RecomendedSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 25.0, bottom: 10.0),
+          padding: const EdgeInsets.only(
+              left: DefaultStyle.paddingValue, bottom: 10.0),
           child: TextWithButton(
             onPressed: onPressedMore,
             text: 'Recomendados',
@@ -29,13 +30,15 @@ class RecomendedSection extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.only(
-                  left: 25,
-                  right: index + 1 == recomended.length ? 25 : 0,
+                  left: DefaultStyle.paddingValue,
+                  right: index + 1 == recomended.length
+                      ? DefaultStyle.paddingValue
+                      : 0,
                 ),
                 width: SizeConfig.width * 0.5,
                 decoration: BoxDecoration(
                   color: Colors.amber,
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: DefaultStyle.roundedShapeRadius,
                 ),
                 child: Stack(
                   children: [
@@ -55,7 +58,7 @@ class RecomendedSection extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
-                            color: Colors.white,
+                            color: AppColors.white,
                           ),
                         ),
                       ),

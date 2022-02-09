@@ -13,11 +13,11 @@ SnackBar getAppSnackBar({
     content: Text(message),
     duration: const Duration(seconds: 4),
     backgroundColor: type == SnackBarType.error
-        ? AppColors.red
-        : (type == SnackBarType.success ? AppColors.green : AppColors.grey),
+        ? AppColors.error
+        : (type == SnackBarType.success ? AppColors.success : AppColors.alert),
     action: SnackBarAction(
       label: 'x',
-      textColor: AppColors.stroke,
+      textColor: AppColors.secondaryTexts,
       onPressed: () => onClose,
     ),
   );

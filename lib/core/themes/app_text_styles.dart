@@ -53,11 +53,11 @@
 //   static final bodyWhite = GoogleFonts.lexendDeca(
 //     fontSize: 13,
 //     fontWeight: FontWeight.w400,
-//     color: AppColors.white,
+//     color: AppAppColors.white,
 //   );
 //   static final bodyBoldWhite = GoogleFonts.lexendDeca(
 //     fontSize: 13,
 //     fontWeight: FontWeight.w600,
-//     color: AppColors.white,
+//     color: AppAppColors.white,
 //   );
 // }

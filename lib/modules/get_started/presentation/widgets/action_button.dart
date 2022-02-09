@@ -1,3 +1,4 @@
+import 'package:cake/core/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class ActionButton extends StatelessWidget {
@@ -10,17 +11,16 @@ class ActionButton extends StatelessWidget {
       onPressed: onPressed,
       child: const Text('Quero Provar'),
       style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFFCB5F5F)),
+        backgroundColor: MaterialStateProperty.all<Color>(AppColors.accent),
         // MaterialStateProperty.all<Color>(const Color(0xFF1D321D)),
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
         padding:
             MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(
           vertical: 20,
           horizontal: 40,
         )),
         textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-          color: Colors.white,
+          color: AppColors.white,
           fontSize: 20,
         )),
         shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -31,7 +31,7 @@ class ActionButton extends StatelessWidget {
       ),
       // style: ElevatedButton.styleFrom(
       //   primary: const Color(0xFFD8B6A9),
-      //   onPrimary: Colors.white,
+      //   onPrimary: AppColors.white,
       //   padding: const EdgeInsets.symmetric(
       //     vertical: 20,
       //     horizontal: 40,
@@ -41,7 +41,7 @@ class ActionButton extends StatelessWidget {
       //   ),
       //   // shape: OutlinedBorder(side: BorderSide.none),
       //   textStyle: const TextStyle(
-      //     color: Colors.white,
+      //     color: AppColors.white,
       //     fontSize: 20,
       //   ),
       // ),

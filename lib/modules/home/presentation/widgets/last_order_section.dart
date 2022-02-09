@@ -17,7 +17,8 @@ class LastOrderSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 25.0, bottom: 10.0),
+          padding: const EdgeInsets.only(
+              left: DefaultStyle.paddingValue, bottom: 10.0),
           child: TextWithButton(
             onPressed: onPressedMore,
             text: 'Últimas compras',
@@ -35,7 +36,7 @@ class LastOrderSection extends StatelessWidget {
                   child: Container(
                     height: SizeConfig.height * 0.15,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
@@ -45,11 +46,13 @@ class LastOrderSection extends StatelessWidget {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.amber,
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius:
+                                  DefaultStyle.roundedSmallShapeRadius,
                             ),
                             child: Image.asset(
                               orders[index]['image'],
-                              width: SizeConfig.width * 0.22,
+                              width: SizeConfig.width * 0.21,
+                              height: SizeConfig.height * 0.20,
                             ),
                           ),
                           Padding(
@@ -66,11 +69,12 @@ class LastOrderSection extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
+                                const SizedBox(
+                                    height: DefaultStyle.heightSmallSpace),
                                 Text(
                                   orders[index]['type'],
                                   style: const TextStyle(
-                                    color: AppColors.stroke,
+                                    color: AppColors.secondaryTexts,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),

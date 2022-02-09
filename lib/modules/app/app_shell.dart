@@ -75,10 +75,10 @@ class AppBottomNavigationBar extends StatelessWidget {
         currentIndex: AppTab.values.indexOf(activeTab),
         onTap: (index) => onTabSelected(AppTab.values[index]),
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.text,
+        unselectedItemColor: AppColors.icons,
         // unselectedItemColor:
         //     AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark
-        //         ? AppColors.white
+        //         ? AppAppColors.white
         //         : AppColors.text,
         showSelectedLabels: false,
         showUnselectedLabels: false,

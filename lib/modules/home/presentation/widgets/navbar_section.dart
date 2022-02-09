@@ -8,34 +8,34 @@ class NavbarSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+      padding: DefaultStyle.paddingTopHorizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: SizeConfig.blockSizeHorizontal * 13.8,
-            height: SizeConfig.blockSizeHorizontal * 13.8,
+            width: DefaultStyle.buttonWidth,
+            height: DefaultStyle.buttonHeight,
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               color: Colors.amber,
-              borderRadius: BorderRadius.circular(18.0),
+              borderRadius: DefaultStyle.roundedTinyShapeRadius,
             ),
           ),
           Row(
             children: const [
               Icon(Icons.room, color: AppColors.primary),
-              SizedBox(width: 5),
+              SizedBox(width: DefaultStyle.widthTinySpace),
               Text(
                 'Bangu, Rio de Janeiro',
-                style: TextStyle(color: AppColors.text, fontSize: 15),
+                style: TextStyle(color: AppColors.accent, fontSize: 15),
               ),
             ],
           ),
           RoundedIconButton(
             icon: Icons.add_alert,
             onPressed: () => null,
-            width: SizeConfig.blockSizeHorizontal * 13.8,
-            height: SizeConfig.blockSizeHorizontal * 13.8,
+            width: DefaultStyle.buttonWidth,
+            height: DefaultStyle.buttonHeight,
           ),
         ],
       ),

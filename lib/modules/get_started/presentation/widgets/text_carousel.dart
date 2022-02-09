@@ -41,7 +41,7 @@ class _TextCarouselState extends State<TextCarousel> {
                   maxLines: 3,
                   style: const TextStyle(
                     fontSize: 18.0,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 );
               },
@@ -64,7 +64,7 @@ class _TextCarouselState extends State<TextCarousel> {
                       )
                     : BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.white.withOpacity(0.4),
+                        color: AppColors.white.withOpacity(0.4),
                       ),
               ),
             );
