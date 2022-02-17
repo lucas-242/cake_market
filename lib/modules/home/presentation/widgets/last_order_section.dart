@@ -22,6 +22,7 @@ class LastOrderSection extends StatelessWidget {
           child: TextWithButton(
             onPressed: onPressedMore,
             text: 'Últimas compras',
+            buttonColor: AppColors.icons,
           ),
         ),
         SizedBox(

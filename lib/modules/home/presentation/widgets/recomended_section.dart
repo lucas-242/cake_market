@@ -20,6 +20,7 @@ class RecomendedSection extends StatelessWidget {
           child: TextWithButton(
             onPressed: onPressedMore,
             text: 'Recomendados',
+            buttonColor: AppColors.icons,
           ),
         ),
         SizedBox(

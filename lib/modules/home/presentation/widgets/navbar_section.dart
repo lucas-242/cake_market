@@ -23,11 +23,18 @@ class NavbarSection extends StatelessWidget {
           ),
           Row(
             children: const [
-              Icon(Icons.room, color: AppColors.primary),
+              Icon(
+                Icons.room,
+                color: AppColors.accent,
+                size: 20,
+              ),
               SizedBox(width: DefaultStyle.widthTinySpace),
               Text(
                 'Bangu, Rio de Janeiro',
-                style: TextStyle(color: AppColors.accent, fontSize: 15),
+                style: TextStyle(
+                    color: AppColors.primary,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700),
               ),
             ],
           ),

@@ -8,6 +8,7 @@ class TextWithButton extends StatelessWidget {
   final Color? textColor;
   final Color? buttonColor;
   final IconData? icon;
+  final FontWeight fontWeight;
 
   const TextWithButton({
     Key? key,
@@ -17,6 +18,7 @@ class TextWithButton extends StatelessWidget {
     this.textColor = AppColors.primary,
     this.buttonColor = AppColors.primary,
     this.icon = Icons.more_horiz,
+    this.fontWeight = FontWeight.w700,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,8 @@ class TextWithButton extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(fontSize: fontSize, color: textColor),
+          style: TextStyle(
+              fontSize: fontSize, color: textColor, fontWeight: fontWeight),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 25),

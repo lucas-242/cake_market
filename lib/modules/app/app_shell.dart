@@ -51,27 +51,10 @@ class AppBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.14),
-            blurRadius: 4.0,
-            offset: Offset(0, 2),
-          ),
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.12),
-            blurRadius: 5.0,
-            offset: Offset(0, 4),
-          ),
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.2),
-            blurRadius: 10.0,
-            offset: Offset(0, 1),
-          ),
-        ],
-      ),
+    return SizedBox(
+      height: SizeConfig.height * 0.1,
       child: BottomNavigationBar(
+        elevation: 0,
         currentIndex: AppTab.values.indexOf(activeTab),
         onTap: (index) => onTabSelected(AppTab.values[index]),
         selectedItemColor: AppColors.primary,
@@ -84,18 +67,15 @@ class AppBottomNavigationBar extends StatelessWidget {
         showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.shopping_cart),
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Icon(Icons.shopping_cart),
             label: 'Busca',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.person),
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.person),
             label: 'Coleção',
           ),
         ],
