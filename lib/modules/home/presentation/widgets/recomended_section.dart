@@ -3,10 +3,14 @@ import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
 
 class RecomendedSection extends StatelessWidget {
+  final Function(dynamic)? onPressedRecomended;
   final VoidCallback onPressedMore;
   final List<dynamic> recomended;
   const RecomendedSection(
-      {Key? key, required this.onPressedMore, required this.recomended})
+      {Key? key,
+      required this.onPressedMore,
+      required this.recomended,
+      this.onPressedRecomended})
       : super(key: key);
 
   @override
@@ -29,42 +33,45 @@ class RecomendedSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: recomended.length,
             itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                  left: DefaultStyle.paddingValue,
-                  right: index + 1 == recomended.length
-                      ? DefaultStyle.paddingValue
-                      : 0,
-                ),
-                width: SizeConfig.width * 0.5,
-                decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: DefaultStyle.roundedShapeRadius,
-                ),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      AppImages.logo,
-                      height: SizeConfig.height * 0.38,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20, bottom: 25),
-                        child: Text(
-                          recomended[index]['name'],
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w900,
-                            color: AppColors.white,
+              return InkWell(
+                onTap: () => onPressedRecomended!(recomended[index]) ?? null,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: DefaultStyle.paddingValue,
+                    right: index + 1 == recomended.length
+                        ? DefaultStyle.paddingValue
+                        : 0,
+                  ),
+                  width: SizeConfig.width * 0.5,
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: DefaultStyle.roundedShapeRadius,
+                  ),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        AppImages.logo,
+                        height: SizeConfig.height * 0.38,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, right: 20, bottom: 25),
+                          child: Text(
+                            recomended[index]['name'],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               );
             },
