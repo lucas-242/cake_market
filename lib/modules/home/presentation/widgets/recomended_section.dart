@@ -4,15 +4,15 @@ import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
 
 class RecomendedSection extends StatelessWidget {
-  final Function(Cake)? onPressedRecomended;
+  final Function(Cake) onPressedRecomended;
   final VoidCallback onPressedMore;
   final List<Cake> recomended;
-  const RecomendedSection(
-      {Key? key,
-      required this.onPressedMore,
-      required this.recomended,
-      this.onPressedRecomended})
-      : super(key: key);
+  const RecomendedSection({
+    Key? key,
+    required this.onPressedMore,
+    required this.recomended,
+    required this.onPressedRecomended,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class RecomendedSection extends StatelessWidget {
             itemCount: recomended.length,
             itemBuilder: (context, index) {
               return InkWell(
-                onTap: () => onPressedRecomended!(recomended[index]) ?? null,
+                onTap: () => onPressedRecomended(recomended[index]),
                 child: Container(
                   margin: EdgeInsets.only(
                     left: DefaultStyle.paddingValue,
