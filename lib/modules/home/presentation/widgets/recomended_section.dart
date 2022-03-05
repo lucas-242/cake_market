@@ -1,11 +1,12 @@
 import 'package:cake/core/themes/themes.dart';
+import 'package:cake/modules/cake/cake.dart';
 import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
 
 class RecomendedSection extends StatelessWidget {
-  final Function(dynamic)? onPressedRecomended;
+  final Function(Cake)? onPressedRecomended;
   final VoidCallback onPressedMore;
-  final List<dynamic> recomended;
+  final List<Cake> recomended;
   const RecomendedSection(
       {Key? key,
       required this.onPressedMore,
@@ -59,7 +60,7 @@ class RecomendedSection extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 20, right: 20, bottom: 25),
                           child: Text(
-                            recomended[index]['name'],
+                            recomended[index].name,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(

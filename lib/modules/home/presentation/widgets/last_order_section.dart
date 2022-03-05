@@ -1,11 +1,12 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/image_selector/image_selector.dart';
+import 'package:cake/modules/cake/cake.dart';
 import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
 
 class LastOrderSection extends StatelessWidget {
   final VoidCallback onPressedMore;
-  final List<dynamic> orders;
+  final List<Cake> orders;
   const LastOrderSection({
     Key? key,
     required this.onPressedMore,
@@ -51,37 +52,47 @@ class LastOrderSection extends StatelessWidget {
                               borderRadius:
                                   DefaultStyle.roundedSmallShapeRadius,
                             ),
-                            child: ImageSelector(
-                              image: orders[index]['image'],
-                              width: SizeConfig.width * 0.21,
+                            child: SizedBox(
+                              width: SizeConfig.width * 0.20,
                               height: SizeConfig.height * 0.20,
                             ),
+                            // child: ImageSelector(
+                            //   image: orders[index].image,
+                            //   width: SizeConfig.width * 0.21,
+                            //   height: SizeConfig.height * 0.20,
+                            // ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 15, bottom: 15, left: 20, right: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  orders[index]['name'],
-                                  style: const TextStyle(
-                                    color: AppColors.primary,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
+                          const SizedBox(width: DefaultStyle.widthSmallSpace),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 15, bottom: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    orders[index].name,
+                                    style: const TextStyle(
+                                      color: AppColors.primary,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    softWrap: true,
                                   ),
-                                ),
-                                const SizedBox(
-                                    height: DefaultStyle.heightSmallSpace),
-                                Text(
-                                  orders[index]['type'],
-                                  style: const TextStyle(
-                                    color: AppColors.secondaryTexts,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
+                                  const SizedBox(
+                                      height: DefaultStyle.heightSmallSpace),
+                                  Text(
+                                    orders[index].type,
+                                    style: const TextStyle(
+                                      color: AppColors.secondaryTexts,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           )
                         ],

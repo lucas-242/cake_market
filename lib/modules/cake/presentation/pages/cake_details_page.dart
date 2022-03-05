@@ -1,10 +1,11 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/star_rating/star_rating.dart';
+import 'package:cake/modules/cake/cake.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 class CakeDetails extends StatelessWidget {
-  final dynamic cake;
+  final Cake cake;
   const CakeDetails({Key? key, required this.cake}) : super(key: key);
 
   @override
@@ -15,29 +16,33 @@ class CakeDetails extends StatelessWidget {
           children: [
             top(),
             const SizedBox(height: DefaultStyle.heightSmallSpace),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: DefaultStyle.heightSmallSpace,
-                right: DefaultStyle.paddingValue * 1.2,
-                left: DefaultStyle.paddingValue * 1.2,
-              ),
-              child: ReadMoreText(
-                cake['description'],
-                style: const TextStyle(
-                    color: AppColors.secondaryTexts,
-                    height: 1.5,
-                    fontWeight: FontWeight.w500),
-                trimLines: 3,
-                colorClickableText: AppColors.primary,
-                moreStyle: const TextStyle(
-                    color: AppColors.primary, fontWeight: FontWeight.w500),
-                lessStyle: const TextStyle(
-                    color: AppColors.primary, fontWeight: FontWeight.w500),
-                trimMode: TrimMode.Line,
-                trimCollapsedText: 'Mostrar mais',
-                trimExpandedText: 'Mostrar menos',
-              ),
-            ),
+            cake.description != null
+                ? Padding(
+                    padding: const EdgeInsets.only(
+                      top: DefaultStyle.heightSmallSpace,
+                      right: DefaultStyle.paddingValue * 1.2,
+                      left: DefaultStyle.paddingValue * 1.2,
+                    ),
+                    child: ReadMoreText(
+                      cake.description!,
+                      style: const TextStyle(
+                          color: AppColors.secondaryTexts,
+                          height: 1.5,
+                          fontWeight: FontWeight.w500),
+                      trimLines: 3,
+                      colorClickableText: AppColors.primary,
+                      moreStyle: const TextStyle(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w500),
+                      lessStyle: const TextStyle(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w500),
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: 'Mostrar mais',
+                      trimExpandedText: 'Mostrar menos',
+                    ),
+                  )
+                : Container(),
           ],
         ),
       ),
@@ -84,7 +89,7 @@ class CakeDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cake['name'],
+                      cake.name,
                       style: const TextStyle(
                         color: AppColors.primary,
                         fontSize: 20,
@@ -93,7 +98,7 @@ class CakeDetails extends StatelessWidget {
                     ),
                     const SizedBox(height: DefaultStyle.heightSmallSpace),
                     Text(
-                      cake['type'],
+                      cake.type,
                       style: const TextStyle(
                         color: AppColors.secondaryTexts,
                         fontSize: 14,
@@ -106,10 +111,10 @@ class CakeDetails extends StatelessWidget {
                         Row(
                           children: [
                             StarRating(
-                              rating: cake['rating'],
+                              rating: cake.rating,
                             ),
                             const SizedBox(width: DefaultStyle.widthTinySpace),
-                            Text('(${cake['rating'].toString()})'),
+                            Text('(${cake.rating.toString()})'),
                           ],
                         ),
                         Container(

@@ -1,6 +1,6 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/search_bar/search_bar.dart';
-import 'package:cake/modules/cake/presentation/pages/cake_details_page.dart';
+import 'package:cake/modules/cake/cake.dart';
 import 'package:cake/modules/home/presentation/widgets/last_order_section.dart';
 import 'package:cake/modules/home/presentation/widgets/navbar_section.dart';
 import 'package:cake/modules/home/presentation/widgets/recomended_section.dart';
@@ -12,51 +12,65 @@ class HomePage extends StatelessWidget {
   static Page page() => const MaterialPage<void>(child: HomePage());
 
   static const recomended = [
-    {
-      'name': 'Mocca Sugar Birthday Cake',
-      'type': 'Birthday Cake',
-      'rating': 4.4,
-      'description':
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
-      'image': null
-    },
-    {
-      'name': 'Mocca Sugar Birthday Cake',
-      'type': 'Birthday Cake',
-      'rating': 4.4,
-      'description':
+      rating: 4.4,
+      image: null,
+    ),
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
-      'image': null
-    },
-    {
-      'name': 'Mocca Sugar Birthday Cake',
-      'type': 'Birthday Cake',
-      'rating': 4.4,
-      'description':
+      rating: 4.4,
+      image: null,
+    ),
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
-      'image': null
-    },
-    {
-      'name': 'Mocca Sugar Birthday Cake',
-      'type': 'Birthday Cake',
-      'rating': 4.4,
-      'description':
+      rating: 4.4,
+      image: null,
+    ),
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
-      'image': null
-    },
-    {
-      'name': 'Mocca Sugar Birthday Cake',
-      'type': 'Birthday Cake',
-      'rating': 4.4,
-      'description':
+      rating: 4.4,
+      image: null,
+    ),
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
-      'image': null
-    },
+      rating: 4.4,
+      image: null,
+    ),
   ];
 
   static const orders = [
-    {'name': 'Blackforrest Mocca', 'type': 'Birthday Cake', 'image': null},
-    {'name': 'Blackforrest Mocca', 'type': 'Birthday Cake', 'image': null},
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
+      rating: 4.4,
+      image: null,
+    ),
+    Cake(
+      name: 'Mocca Sugar Birthday Cake',
+      type: CakeType.butterCake,
+      description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
+      rating: 4.4,
+      image: null,
+    ),
   ];
 
   @override
