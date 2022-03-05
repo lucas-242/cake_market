@@ -15,7 +15,7 @@ class RoundedIconButton extends StatelessWidget {
     required this.onPressed,
     this.height,
     this.width,
-    this.backgroundColor = AppColors.primary,
+    this.backgroundColor = AppColors.accent,
     this.color = AppColors.white,
   }) : super(key: key);
 

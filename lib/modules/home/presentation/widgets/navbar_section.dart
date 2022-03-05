@@ -17,7 +17,7 @@ class NavbarSection extends StatelessWidget {
             height: DefaultStyle.buttonHeight,
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: Colors.amber,
+              color: Colors.grey[500],
               borderRadius: DefaultStyle.roundedTinyShapeRadius,
             ),
           ),

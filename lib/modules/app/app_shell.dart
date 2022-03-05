@@ -32,7 +32,7 @@ class AppShell extends StatelessWidget {
   Widget body(AppTab activeTab) {
     switch (activeTab) {
       case AppTab.catalog:
-        return Container(color: Colors.amber);
+        return Container(color: Colors.grey[500]);
       case AppTab.profile:
         return Container(color: Colors.green);
       default:
@@ -57,7 +57,7 @@ class AppBottomNavigationBar extends StatelessWidget {
         elevation: 0,
         currentIndex: AppTab.values.indexOf(activeTab),
         onTap: (index) => onTabSelected(AppTab.values[index]),
-        selectedItemColor: AppColors.primary,
+        selectedItemColor: AppColors.accent,
         unselectedItemColor: AppColors.icons,
         // unselectedItemColor:
         //     AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark

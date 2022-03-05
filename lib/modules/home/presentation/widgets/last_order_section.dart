@@ -48,7 +48,7 @@ class LastOrderSection extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.amber,
+                              color: Colors.grey[500],
                               borderRadius:
                                   DefaultStyle.roundedSmallShapeRadius,
                             ),

@@ -45,7 +45,7 @@ class RecomendedSection extends StatelessWidget {
                   ),
                   width: SizeConfig.width * 0.5,
                   decoration: BoxDecoration(
-                    color: Colors.amber,
+                    color: Colors.grey[500],
                     borderRadius: DefaultStyle.roundedShapeRadius,
                   ),
                   child: Stack(

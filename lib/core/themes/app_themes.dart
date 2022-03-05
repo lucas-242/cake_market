@@ -8,7 +8,7 @@
 //     brightness: Brightness.dark,
 //     primarySwatch: AppColors.primarySwatch,
 //     primaryColor: AppColors.primary,
-//     scaffoldBackgroundColor: Colors.grey[850],
+//     scaffoldBackgroundColor: Colors.grey[500][850],
 //     colorScheme: ColorScheme.dark(
 //       primary: AppColors.primary,
 //       primaryVariant: AppColors.primary,
