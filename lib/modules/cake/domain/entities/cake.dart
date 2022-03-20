@@ -6,7 +6,12 @@ class Cake extends Equatable {
   final String? description;
   final CakeType _type;
   final double rating;
+  final CakeSize size;
   final String? image;
+  final double? price;
+  final bool isPromotion;
+  final double? discount;
+  final List<String>? tags;
 
   const Cake({
     required this.name,
@@ -14,27 +19,37 @@ class Cake extends Equatable {
     this.rating = 0,
     this.description,
     this.image,
+    required this.size,
+    this.price,
+    this.isPromotion = false,
+    this.discount,
+    this.tags,
   }) : _type = type;
 
   String get type {
     switch (_type) {
-      case CakeType.angelCake:
-        return 'Angel Cake';
-      case CakeType.butterCake:
-        return 'Butter Cake';
-      case CakeType.chiffonCake:
-        return 'Chiffon Cake';
-      case CakeType.genoeseCake:
-        return 'Genoese Cake';
-      case CakeType.noFluorCake:
-        return 'No Fluor Cake';
-      case CakeType.spongeCake:
-        return 'Sponge Cake';
-      case CakeType.vegetableOilCake:
-        return 'Oil Vegetable Cake';
+      case CakeType.bolo:
+        return 'Bolo';
+      case CakeType.torta:
+        return 'Torta';
+      case CakeType.tortaSalgada:
+        return 'Torta Salgada';
+      default:
+        return "";
     }
   }
 
   @override
-  List<Object?> get props => [name, _type, rating, description, image];
+  List<Object?> get props => [
+        name,
+        _type,
+        rating,
+        description,
+        image,
+        size,
+        price,
+        isPromotion,
+        discount,
+        tags,
+      ];
 }

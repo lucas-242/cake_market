@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:cake/modules/cake/domain/domain.dart';
 
 class CakeFirebaseModel {
@@ -7,14 +9,24 @@ class CakeFirebaseModel {
   final String? description;
   final String type;
   final double rating;
+  final String size;
   final String? image;
+  final double? price;
+  final bool isPromotion;
+  final double? discount;
+  final List<String>? tags;
 
   CakeFirebaseModel({
     required this.name,
     this.description,
     required this.type,
     required this.rating,
+    required this.size,
     this.image,
+    this.price,
+    required this.isPromotion,
+    this.discount,
+    this.tags,
   });
 
   CakeFirebaseModel copyWith({
@@ -22,14 +34,24 @@ class CakeFirebaseModel {
     String? description,
     String? type,
     double? rating,
+    String? size,
     String? image,
+    double? price,
+    bool? isPromotion,
+    double? discount,
+    List<String>? tags,
   }) {
     return CakeFirebaseModel(
       name: name ?? this.name,
       description: description ?? this.description,
       type: type ?? this.type,
       rating: rating ?? this.rating,
+      size: size ?? this.size,
       image: image ?? this.image,
+      price: price ?? this.price,
+      isPromotion: isPromotion ?? this.isPromotion,
+      discount: discount ?? this.discount,
+      tags: tags ?? this.tags,
     );
   }
 
@@ -39,7 +61,12 @@ class CakeFirebaseModel {
       'description': description,
       'type': type,
       'rating': rating,
+      'size': size,
       'image': image,
+      'price': price,
+      'isPromotion': isPromotion,
+      'discount': discount,
+      'tags': tags,
     };
   }
 
@@ -49,34 +76,40 @@ class CakeFirebaseModel {
       description: map['description'],
       type: map['type'] ?? '',
       rating: map['rating']?.toDouble() ?? 0.0,
+      size: map['size'] ?? '',
       image: map['image'],
+      price: map['price']?.toDouble(),
+      isPromotion: map['isPromotion'] ?? false,
+      discount: map['discount']?.toDouble(),
+      tags: List<String>.from(map['tags']),
     );
   }
 
   Cake toCake() {
     late CakeType typeConverted;
+    late CakeSize sizeConverted;
 
     switch (type) {
-      case "angelCake":
-        typeConverted = CakeType.angelCake;
+      case "bolo":
+        typeConverted = CakeType.bolo;
         break;
-      case "butterCake":
-        typeConverted = CakeType.butterCake;
+      case "torta":
+        typeConverted = CakeType.torta;
         break;
-      case "chiffonCake":
-        typeConverted = CakeType.chiffonCake;
+      case "tortaSalgada":
+        typeConverted = CakeType.tortaSalgada;
         break;
-      case "geneoseCake":
-        typeConverted = CakeType.genoeseCake;
+    }
+
+    switch (size) {
+      case "pequeno":
+        sizeConverted = CakeSize.pequeno;
         break;
-      case "noFluorCake":
-        typeConverted = CakeType.noFluorCake;
+      case "medio":
+        sizeConverted = CakeSize.pequeno;
         break;
-      case "spongeCake":
-        typeConverted = CakeType.spongeCake;
-        break;
-      case "vegetableOilCake":
-        typeConverted = CakeType.vegetableOilCake;
+      case "grande":
+        sizeConverted = CakeSize.grande;
         break;
     }
 
@@ -86,6 +119,11 @@ class CakeFirebaseModel {
       description: description,
       image: image,
       rating: rating,
+      size: sizeConverted,
+      discount: discount,
+      isPromotion: isPromotion,
+      price: price,
+      tags: tags,
     );
   }
 
@@ -96,7 +134,7 @@ class CakeFirebaseModel {
 
   @override
   String toString() {
-    return 'CakeFirebaseModel(name: $name, description: $description, type: $type, rating: $rating, image: $image)';
+    return 'CakeFirebaseModel(name: $name, description: $description, type: $type, rating: $rating, size: $size, image: $image, price: $price, isPromotion: $isPromotion, discount: $discount, tags: $tags)';
   }
 
   @override
@@ -108,7 +146,12 @@ class CakeFirebaseModel {
         other.description == description &&
         other.type == type &&
         other.rating == rating &&
-        other.image == image;
+        other.size == size &&
+        other.image == image &&
+        other.price == price &&
+        other.isPromotion == isPromotion &&
+        other.discount == discount &&
+        listEquals(other.tags, tags);
   }
 
   @override
@@ -117,6 +160,11 @@ class CakeFirebaseModel {
         description.hashCode ^
         type.hashCode ^
         rating.hashCode ^
-        image.hashCode;
+        size.hashCode ^
+        image.hashCode ^
+        price.hashCode ^
+        isPromotion.hashCode ^
+        discount.hashCode ^
+        tags.hashCode;
   }
 }

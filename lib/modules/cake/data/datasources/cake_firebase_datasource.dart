@@ -9,13 +9,16 @@ class CakeFirebaseDatasource extends ICakeDatasource {
       : _firestore = firestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<List<Cake>> get() {
+  Future<List<Cake>> get() async {
     List<Cake> result = [];
-    _firestore.collection('cake').get().then((QuerySnapshot querySnapshot) {
+    await _firestore
+        .collection('cake')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
       result = querySnapshot.docs
           .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
           .toList();
     });
-    throw UnimplementedError();
+    return result;
   }
 }

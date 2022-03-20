@@ -1,9 +1,1 @@
-enum CakeType {
-  angelCake,
-  butterCake,
-  chiffonCake,
-  genoeseCake,
-  noFluorCake,
-  spongeCake,
-  vegetableOilCake
-}
+enum CakeType { bolo, torta, tortaSalgada }
