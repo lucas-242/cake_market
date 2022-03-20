@@ -1,5 +1,4 @@
 import 'package:cake/core/themes/themes.dart';
-import 'package:cake/core/widgets/image_selector/image_selector.dart';
 import 'package:cake/modules/cake/cake.dart';
 import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';

@@ -5,7 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '/injection_container.dart' as di;
+import '../../../../injector_container.dart' as di;
 
 class GetStarted extends StatefulWidget {
   const GetStarted({Key? key}) : super(key: key);

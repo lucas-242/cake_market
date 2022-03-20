@@ -15,7 +15,7 @@ class CakeDetails extends StatefulWidget {
 }
 
 class _CakeDetailsState extends State<CakeDetails> {
-  String selectedValue = 'S';
+  CakeSize selectedValue = CakeSize.pequeno;
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +175,7 @@ class _CakeDetailsState extends State<CakeDetails> {
                             Text('(${widget.cake.rating.toString()})'),
                           ],
                         ),
-                        QuantityButtonsRow(quantity: 1),
+                        const QuantityButtonsRow(quantity: 1),
                         // Container(
                         //   color: Colors.black,
                         //   width: 50,

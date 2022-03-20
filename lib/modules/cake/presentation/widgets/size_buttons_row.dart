@@ -1,9 +1,10 @@
+import 'package:cake/modules/cake/cake.dart';
 import 'package:cake/modules/cake/presentation/widgets/size_button.dart';
 import 'package:flutter/material.dart';
 
 class SizeButtonsRow extends StatelessWidget {
-  final String selectedValue;
-  final ValueChanged<String> onChanged;
+  final CakeSize selectedValue;
+  final ValueChanged<CakeSize> onChanged;
   const SizeButtonsRow({
     Key? key,
     required this.onChanged,
@@ -16,21 +17,21 @@ class SizeButtonsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizeButton(
-          text: 'S',
-          value: 'S',
-          isSelected: selectedValue == 'S',
+          text: 'P',
+          value: CakeSize.pequeno,
+          isSelected: selectedValue == CakeSize.pequeno,
           onChanged: onChanged,
         ),
         SizeButton(
           text: 'M',
-          value: 'M',
-          isSelected: selectedValue == 'M',
+          value: CakeSize.medio,
+          isSelected: selectedValue == CakeSize.medio,
           onChanged: onChanged,
         ),
         SizeButton(
-          text: 'L',
-          value: 'L',
-          isSelected: selectedValue == 'L',
+          text: 'G',
+          value: CakeSize.grande,
+          isSelected: selectedValue == CakeSize.grande,
           onChanged: onChanged,
         ),
       ],

@@ -1,10 +1,11 @@
 import 'package:cake/core/themes/themes.dart';
+import 'package:cake/modules/cake/cake.dart';
 import 'package:flutter/material.dart';
 
 class SizeButton extends StatelessWidget {
-  final String value;
+  final CakeSize value;
   final String? text;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<CakeSize> onChanged;
   final bool isSelected;
   const SizeButton({
     Key? key,
@@ -37,7 +38,7 @@ class SizeButton extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: Center(
                   child: Text(
-                    text ?? value,
+                    text ?? value.toString(),
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,

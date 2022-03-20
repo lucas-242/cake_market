@@ -1,8 +1,9 @@
 import 'package:cake/modules/app/app.dart';
+import 'package:cake/modules/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '/injection_container.dart' as di;
+import '../../injector_container.dart' as di;
 
 class AppProvider extends StatelessWidget {
   const AppProvider({
@@ -18,6 +19,9 @@ class AppProvider extends StatelessWidget {
         ),
         BlocProvider<TabBloc>(
           create: (_) => TabBloc(),
+        ),
+        BlocProvider<HomeBloc>(
+          create: (_) => di.instance<HomeBloc>(),
         ),
       ],
       // child: AdaptiveTheme(

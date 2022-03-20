@@ -8,4 +8,7 @@ class CakeRepository extends ICakeRepository {
 
   @override
   Future<List<Cake>> get() => _datasource.get();
+
+  @override
+  Future<List<Cake>> getRecomended() => _datasource.getRecomended();
 }
