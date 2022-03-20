@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppShell extends StatelessWidget {
+class AppShell extends StatefulWidget {
   const AppShell({
     Key? key,
   }) : super(key: key);
@@ -14,8 +14,14 @@ class AppShell extends StatelessWidget {
   static Page page() => const MaterialPage<void>(child: AppShell());
 
   @override
+  State<AppShell> createState() => _AppShellState();
+}
+
+class _AppShellState extends State<AppShell> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  @override
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
     SizeConfig(context, kBottomNavigationBarHeight);
 
     return FutureBuilder(

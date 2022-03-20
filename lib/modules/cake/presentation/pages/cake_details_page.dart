@@ -75,7 +75,7 @@ class _CakeDetailsState extends State<CakeDetails> {
                   width: SizeConfig.width,
                   child: ElevatedButton(
                     onPressed: () => print('booking'),
-                    child: const Text('Book now'),
+                    child: const Text('Pedir agora'),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(AppColors.accent),

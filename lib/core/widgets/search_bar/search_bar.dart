@@ -35,7 +35,7 @@ class SearchBar extends StatelessWidget {
     return Container(
       padding: padding,
       child: Row(
-        children: <Widget>[
+        children: [
           Expanded(
             child: Container(
               height: height,
