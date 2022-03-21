@@ -35,4 +35,18 @@ class CakeFirebaseDatasource extends ICakeDatasource {
     });
     return result;
   }
+
+  @override
+  Future<List<Cake>> search(String text) async {
+    List<Cake> result = [];
+    await _firestore
+        .collection('cake')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      result = querySnapshot.docs
+          .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
+          .toList();
+    });
+    return result;
+  }
 }

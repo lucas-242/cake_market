@@ -11,4 +11,7 @@ class CakeRepository extends ICakeRepository {
 
   @override
   Future<List<Cake>> getRecomended() => _datasource.getRecomended();
+
+  @override
+  Future<List<Cake>> search(String text) => _datasource.search(text);
 }
