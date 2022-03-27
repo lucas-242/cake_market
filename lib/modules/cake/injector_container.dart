@@ -1,5 +1,5 @@
 import 'package:cake/modules/cake/cake.dart';
-import 'package:cake/modules/cake/data/datasources/cake_firebase_datasource.dart';
+import 'package:cake/modules/cake/data/datasources/cake_back4app_datasource.dart';
 import 'package:cake/modules/cake/data/repositories/cake_repository.dart';
 import 'package:get_it/get_it.dart';
 
@@ -22,5 +22,5 @@ Future<void> init() async {
 
   // Datasources
   instance
-      .registerLazySingleton<ICakeDatasource>(() => CakeFirebaseDatasource());
+      .registerLazySingleton<ICakeDatasource>(() => CakeBack4AppDatasource());
 }

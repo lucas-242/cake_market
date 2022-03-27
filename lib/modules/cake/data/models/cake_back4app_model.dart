@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
-import 'package:cake/modules/cake/domain/domain.dart';
+import 'package:cake/modules/cake/cake.dart';
+import 'package:cake/modules/cake/data/models/cake_tag_back4app_model.dart';
 
-class CakeFirebaseModel {
+class CakeBack4AppModel {
   final String name;
   final String? description;
   final String type;
@@ -14,9 +16,9 @@ class CakeFirebaseModel {
   final double? price;
   final bool isPromotion;
   final double? discount;
-  final List<String>? tags;
+  final List<CakeTagBack4AppModel>? tags;
 
-  CakeFirebaseModel({
+  CakeBack4AppModel({
     required this.name,
     this.description,
     required this.type,
@@ -29,7 +31,7 @@ class CakeFirebaseModel {
     this.tags,
   });
 
-  CakeFirebaseModel copyWith({
+  CakeBack4AppModel copyWith({
     String? name,
     String? description,
     String? type,
@@ -39,9 +41,9 @@ class CakeFirebaseModel {
     double? price,
     bool? isPromotion,
     double? discount,
-    List<String>? tags,
+    List<CakeTagBack4AppModel>? tags,
   }) {
-    return CakeFirebaseModel(
+    return CakeBack4AppModel(
       name: name ?? this.name,
       description: description ?? this.description,
       type: type ?? this.type,
@@ -66,12 +68,28 @@ class CakeFirebaseModel {
       'price': price,
       'isPromotion': isPromotion,
       'discount': discount,
-      'tags': tags,
+      'tags': tags?.map((x) => x.toMap()).toList(),
     };
   }
 
-  factory CakeFirebaseModel.fromMap(Map<String, dynamic> map) {
-    return CakeFirebaseModel(
+  factory CakeBack4AppModel.fromParseObject(ParseObject object) {
+    var tags = object.get<List>('tags') ?? [];
+    return CakeBack4AppModel(
+      name: object.get('name') ?? '',
+      description: object.get('description'),
+      type: object.get('type'),
+      rating: object.get('rating').toDouble() ?? 0.0,
+      size: object.get('size'),
+      image: object.get('image'),
+      price: object.get('price').toDouble(),
+      isPromotion: object.get('isPromotion') ?? false,
+      discount: object.get('discount')?.toDouble(),
+      tags: tags.map((e) => CakeTagBack4AppModel.fromParseObject(e)).toList(),
+    );
+  }
+
+  factory CakeBack4AppModel.fromMap(Map<String, dynamic> map) {
+    return CakeBack4AppModel(
       name: map['name'] ?? '',
       description: map['description'],
       type: map['type'] ?? '',
@@ -81,7 +99,10 @@ class CakeFirebaseModel {
       price: map['price']?.toDouble(),
       isPromotion: map['isPromotion'] ?? false,
       discount: map['discount']?.toDouble(),
-      tags: List<String>.from(map['tags']),
+      tags: map['tags'] != null
+          ? List<CakeTagBack4AppModel>.from(
+              map['tags']?.map((x) => CakeTagBack4AppModel.fromMap(x)))
+          : null,
     );
   }
 
@@ -99,6 +120,9 @@ class CakeFirebaseModel {
       case "tortaSalgada":
         typeConverted = CakeType.tortaSalgada;
         break;
+      default:
+        typeConverted = CakeType.torta;
+        break;
     }
 
     switch (size) {
@@ -110,6 +134,9 @@ class CakeFirebaseModel {
         break;
       case "grande":
         sizeConverted = CakeSize.grande;
+        break;
+      default:
+        sizeConverted = CakeSize.pequeno;
         break;
     }
 
@@ -123,25 +150,34 @@ class CakeFirebaseModel {
       discount: discount,
       isPromotion: isPromotion,
       price: price,
-      tags: const [],
+      tags: tags != null && tags!.isNotEmpty
+          ? tags!
+              .map((e) => CakeTag(
+                    name: e.name,
+                    createdAt: e.createdAt,
+                    objectId: e.objectId,
+                    updatedAt: e.updatedAt,
+                  ))
+              .toList()
+          : [],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CakeFirebaseModel.fromJson(String source) =>
-      CakeFirebaseModel.fromMap(json.decode(source));
+  factory CakeBack4AppModel.fromJson(String source) =>
+      CakeBack4AppModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'CakeFirebaseModel(name: $name, description: $description, type: $type, rating: $rating, size: $size, image: $image, price: $price, isPromotion: $isPromotion, discount: $discount, tags: $tags)';
+    return 'CakeBack4appModel(name: $name, description: $description, type: $type, rating: $rating, size: $size, image: $image, price: $price, isPromotion: $isPromotion, discount: $discount, tags: $tags)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CakeFirebaseModel &&
+    return other is CakeBack4AppModel &&
         other.name == name &&
         other.description == description &&
         other.type == type &&

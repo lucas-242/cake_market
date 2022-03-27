@@ -11,7 +11,7 @@ class Cake extends Equatable {
   final double? price;
   final bool isPromotion;
   final double? discount;
-  final List<String>? tags;
+  final List<CakeTag>? tags;
 
   const Cake({
     required this.name,
@@ -35,7 +35,7 @@ class Cake extends Equatable {
       case CakeType.tortaSalgada:
         return 'Torta Salgada';
       default:
-        return "";
+        return '';
     }
   }
 
