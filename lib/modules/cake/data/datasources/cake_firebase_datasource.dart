@@ -1,52 +1,54 @@
-import 'package:cake/modules/cake/data/models/cake_firebase_model.dart';
-import 'package:cake/modules/cake/domain/domain.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//* This class needs firebase's extension
 
-class CakeFirebaseDatasource extends ICakeDatasource {
-  final FirebaseFirestore _firestore;
+// import 'package:cake/modules/cake/data/models/cake_firebase_model.dart';
+// import 'package:cake/modules/cake/domain/domain.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-  CakeFirebaseDatasource({FirebaseFirestore? firestore})
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+// class CakeFirebaseDatasource extends ICakeDatasource {
+//   final FirebaseFirestore _firestore;
 
-  @override
-  Future<List<Cake>> get() async {
-    List<Cake> result = [];
-    await _firestore
-        .collection('cake')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      result = querySnapshot.docs
-          .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
-          .toList();
-    });
-    return result;
-  }
+//   CakeFirebaseDatasource({FirebaseFirestore? firestore})
+//       : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  @override
-  Future<List<Cake>> getRecomended() async {
-    List<Cake> result = [];
-    await _firestore
-        .collection('cake')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      result = querySnapshot.docs
-          .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
-          .toList();
-    });
-    return result;
-  }
+//   @override
+//   Future<List<Cake>> get() async {
+//     List<Cake> result = [];
+//     await _firestore
+//         .collection('cake')
+//         .get()
+//         .then((QuerySnapshot querySnapshot) {
+//       result = querySnapshot.docs
+//           .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
+//           .toList();
+//     });
+//     return result;
+//   }
 
-  @override
-  Future<List<Cake>> search(String text) async {
-    List<Cake> result = [];
-    await _firestore
-        .collection('cake')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      result = querySnapshot.docs
-          .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
-          .toList();
-    });
-    return result;
-  }
-}
+//   @override
+//   Future<List<Cake>> getRecomended() async {
+//     List<Cake> result = [];
+//     await _firestore
+//         .collection('cake')
+//         .get()
+//         .then((QuerySnapshot querySnapshot) {
+//       result = querySnapshot.docs
+//           .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
+//           .toList();
+//     });
+//     return result;
+//   }
+
+//   @override
+//   Future<List<Cake>> search(String text) async {
+//     List<Cake> result = [];
+//     await _firestore
+//         .collection('cake')
+//         .get()
+//         .then((QuerySnapshot querySnapshot) {
+//       result = querySnapshot.docs
+//           .map((e) => CakeFirebaseModel.fromMap(e.data() as dynamic).toCake())
+//           .toList();
+//     });
+//     return result;
+//   }
+// }
