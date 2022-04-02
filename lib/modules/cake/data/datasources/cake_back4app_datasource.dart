@@ -8,40 +8,41 @@ class CakeBack4AppDatasource extends ICakeDatasource {
   @override
   Future<List<Cake>> get() async {
     QueryBuilder<ParseObject> query =
-        QueryBuilder<ParseObject>(ParseObject('Cake'));
-    final ParseResponse apiResponse = await query.query();
+        QueryBuilder<ParseObject>(ParseObject('Cake'))..includeObject(['tags']);
 
-    if (apiResponse.success && apiResponse.results != null) {
-      var response = apiResponse.results!
-          .map((e) => CakeBack4AppModel.fromMap(e).toCake())
-          .toList();
-      return response;
-    } else {
-      return [];
-    }
+    final ParseResponse apiResponse = await query.query();
+    return _checkApiResponse(apiResponse);
   }
 
   @override
   Future<List<Cake>> getRecomended() async {
-    QueryBuilder<ParseObject> cakeQuery =
-        QueryBuilder<ParseObject>(ParseObject('Cake'))..includeObject(['tags']);
+    QueryBuilder<ParseObject> query =
+        QueryBuilder<ParseObject>(ParseObject('Cake'))
+          ..includeObject(['tags'])
+          ..orderByDescending('rating')
+          ..setLimit(5);
 
-    final ParseResponse apiResponse = await cakeQuery.query();
-
-    if (apiResponse.success && apiResponse.results != null) {
-      var response = apiResponse.results!
-          .map((e) => CakeBack4AppModel.fromParseObject(e).toCake())
-          .toList();
-      return response;
-    } else {
-      return [];
-    }
+    final ParseResponse apiResponse = await query.query();
+    return _checkApiResponse(apiResponse);
   }
 
   @override
-  Future<List<Cake>> search(String text) {
-    // TODO: implement search
-    throw UnimplementedError();
+  Future<List<Cake>> search(String text) async {
+    QueryBuilder<ParseObject> query1 =
+        QueryBuilder<ParseObject>(ParseObject('Cake'))
+          ..includeObject(['tags'])
+          ..whereContains('name', text);
+
+    QueryBuilder<ParseObject> query2 =
+        QueryBuilder<ParseObject>(ParseObject('Cake'))
+          ..includeObject(['tags'])
+          ..whereContainedIn('tags', [text]);
+
+    QueryBuilder<ParseObject> mainQuery =
+        QueryBuilder.or(ParseObject('Cake'), [query1, query2]);
+
+    final ParseResponse apiResponse = await mainQuery.query();
+    return _checkApiResponse(apiResponse);
   }
 
   Future<ParseResponse> add() async {
@@ -60,5 +61,17 @@ class CakeBack4AppDatasource extends ICakeDatasource {
         ParseObject('CakeTag')..objectId = 'UNurgnMJQV'
       ]);
     return cakeToSave.save();
+  }
+}
+
+/// Checks the [apiResponse], get the list and converts to Cake entity
+List<Cake> _checkApiResponse(ParseResponse apiResponse) {
+  if (apiResponse.success && apiResponse.results != null) {
+    var response = apiResponse.results!
+        .map((e) => CakeBack4AppModel.fromParseObject(e).toCake())
+        .toList();
+    return response;
+  } else {
+    return [];
   }
 }

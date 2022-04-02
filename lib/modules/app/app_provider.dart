@@ -1,5 +1,6 @@
 import 'package:cake/modules/app/app.dart';
 import 'package:cake/modules/home/home.dart';
+import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +23,9 @@ class AppProvider extends StatelessWidget {
         ),
         BlocProvider<HomeBloc>(
           create: (_) => di.instance<HomeBloc>(),
+        ),
+        BlocProvider<SearchBloc>(
+          create: (_) => di.instance<SearchBloc>(),
         ),
       ],
       // child: AdaptiveTheme(

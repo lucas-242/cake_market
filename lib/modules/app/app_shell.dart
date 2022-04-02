@@ -2,6 +2,7 @@ import 'package:cake/core/models/models.dart';
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/modules/app/app.dart';
 import 'package:cake/modules/home/home.dart';
+import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,8 +37,8 @@ class _AppShellState extends State<AppShell> {
 
   Widget body(AppTab activeTab) {
     switch (activeTab) {
-      case AppTab.catalog:
-        return Container(color: Colors.grey[500]);
+      case AppTab.search:
+        return const SearchPage();
       case AppTab.profile:
         return Container(color: Colors.green);
       default:
@@ -76,12 +77,12 @@ class AppBottomNavigationBar extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.search),
             label: 'Busca',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Coleção',
+            label: 'Perfil',
           ),
         ],
       ),

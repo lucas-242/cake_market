@@ -15,6 +15,7 @@ Future<void> init() async {
   instance.registerLazySingleton(() => GetCakes(cakeRepository: instance()));
   instance.registerLazySingleton(
       () => GetRecomendedCakes(cakeRepository: instance()));
+  instance.registerLazySingleton(() => SearchCakes(cakeRepository: instance()));
 
   // Repositories
   instance.registerLazySingleton<ICakeRepository>(

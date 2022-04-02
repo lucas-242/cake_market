@@ -24,7 +24,7 @@ class RecomendedSection extends StatelessWidget {
               left: DefaultStyle.paddingValue, bottom: 10.0),
           child: TextWithButton(
             onPressed: onPressedMore,
-            text: 'Recomendados',
+            text: 'Melhores avaliados',
             buttonColor: AppColors.icons,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/search_bar/search_bar.dart';
+import 'package:cake/modules/app/app.dart';
 import 'package:cake/modules/cake/cake.dart';
 import 'package:cake/modules/home/home.dart';
 import 'package:cake/modules/home/presentation/widgets/last_order_section.dart';
@@ -49,9 +50,6 @@ class _HomePageState extends State<HomePage> {
             children: [
               const NavbarSection(),
               const SizedBox(height: DefaultStyle.heightSpace),
-              const SearchBar(
-                label: 'Pesquise uma delícia aqui',
-              ),
               //* Height should be smaller to compensate the button padding
               const SizedBox(height: DefaultStyle.heightSmallSpace),
               BlocBuilder<HomeBloc, HomeState>(

@@ -12,3 +12,13 @@ class UpdateTab extends TabEvent {
   @override
   List<Object> get props => [tab];
 }
+
+///This event is triggered when the searchbar is used
+class ToSearchTabFiltering extends TabEvent {
+  final String search;
+
+  const ToSearchTabFiltering(this.search);
+
+  @override
+  List<Object> get props => [search];
+}
