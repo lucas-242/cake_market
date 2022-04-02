@@ -28,15 +28,21 @@ class CakeBack4AppDatasource extends ICakeDatasource {
 
   @override
   Future<List<Cake>> search(String text) async {
+    QueryBuilder<ParseObject> inner =
+        QueryBuilder<ParseObject>(ParseObject('CakeTag'))
+          ..whereContains('name', text);
+
+    //* Query by tags
     QueryBuilder<ParseObject> query1 =
         QueryBuilder<ParseObject>(ParseObject('Cake'))
           ..includeObject(['tags'])
-          ..whereContains('name', text);
+          ..whereMatchesQuery('tags', inner);
 
+    //* Query by name
     QueryBuilder<ParseObject> query2 =
         QueryBuilder<ParseObject>(ParseObject('Cake'))
           ..includeObject(['tags'])
-          ..whereContainedIn('tags', [text]);
+          ..whereContains('name', text);
 
     QueryBuilder<ParseObject> mainQuery =
         QueryBuilder.or(ParseObject('Cake'), [query1, query2]);
