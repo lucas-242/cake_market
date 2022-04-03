@@ -23,7 +23,7 @@ class SearchTile extends StatelessWidget {
           children: [
             Text(product.name),
             // const SizedBox(height: DefaultStyle.heightTinySpace),
-            Text(product.type),
+            Text(product.category),
             // const SizedBox(height: DefaultStyle.heightTinySpace),
             Text(NumberFormat.currency(
               symbol: 'R\$',

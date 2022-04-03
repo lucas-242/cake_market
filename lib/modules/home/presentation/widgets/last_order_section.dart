@@ -83,7 +83,7 @@ class LastOrderSection extends StatelessWidget {
                                   const SizedBox(
                                       height: DefaultStyle.heightSmallSpace),
                                   Text(
-                                    orders[index].type,
+                                    orders[index].category,
                                     style: const TextStyle(
                                       color: AppColors.secondaryTexts,
                                       fontSize: 14,

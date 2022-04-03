@@ -156,7 +156,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     const SizedBox(height: DefaultStyle.heightSmallSpace),
                     Text(
-                      widget.product.type,
+                      widget.product.category,
                       style: const TextStyle(
                         color: AppColors.secondaryTexts,
                         fontSize: 14,

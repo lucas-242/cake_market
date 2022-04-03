@@ -9,7 +9,7 @@ import 'package:cake/modules/product/data/models/product_tag_back4app_model.dart
 class ProductBack4AppModel {
   final String name;
   final String? description;
-  final String type;
+  final String category;
   final double rating;
   final String size;
   final String? image;
@@ -21,7 +21,7 @@ class ProductBack4AppModel {
   ProductBack4AppModel({
     required this.name,
     this.description,
-    required this.type,
+    required this.category,
     required this.rating,
     required this.size,
     this.image,
@@ -34,7 +34,7 @@ class ProductBack4AppModel {
   ProductBack4AppModel copyWith({
     String? name,
     String? description,
-    String? type,
+    String? category,
     double? rating,
     String? size,
     String? image,
@@ -46,7 +46,7 @@ class ProductBack4AppModel {
     return ProductBack4AppModel(
       name: name ?? this.name,
       description: description ?? this.description,
-      type: type ?? this.type,
+      category: category ?? this.category,
       rating: rating ?? this.rating,
       size: size ?? this.size,
       image: image ?? this.image,
@@ -61,7 +61,7 @@ class ProductBack4AppModel {
     return {
       'name': name,
       'description': description,
-      'type': type,
+      'category': category,
       'rating': rating,
       'size': size,
       'image': image,
@@ -77,7 +77,7 @@ class ProductBack4AppModel {
     return ProductBack4AppModel(
       name: object.get('name') ?? '',
       description: object.get('description'),
-      type: object.get('type'),
+      category: object.get('category'),
       rating: object.get('rating').toDouble() ?? 0.0,
       size: object.get('size'),
       image: object.get('image'),
@@ -93,7 +93,7 @@ class ProductBack4AppModel {
     return ProductBack4AppModel(
       name: map['name'] ?? '',
       description: map['description'],
-      type: map['type'] ?? '',
+      category: map['category'] ?? '',
       rating: map['rating']?.toDouble() ?? 0.0,
       size: map['size'] ?? '',
       image: map['image'],
@@ -108,21 +108,21 @@ class ProductBack4AppModel {
   }
 
   Product toProduct() {
-    late ProductType typeConverted;
+    late ProductCategory categoryConverted;
     late ProductSize sizeConverted;
 
-    switch (type) {
+    switch (category) {
       case "bolo":
-        typeConverted = ProductType.bolo;
+        categoryConverted = ProductCategory.bolo;
         break;
       case "torta":
-        typeConverted = ProductType.torta;
+        categoryConverted = ProductCategory.torta;
         break;
       case "tortaSalgada":
-        typeConverted = ProductType.tortaSalgada;
+        categoryConverted = ProductCategory.tortaSalgada;
         break;
       default:
-        typeConverted = ProductType.torta;
+        categoryConverted = ProductCategory.torta;
         break;
     }
 
@@ -143,7 +143,7 @@ class ProductBack4AppModel {
 
     return Product(
       name: name,
-      type: typeConverted,
+      category: categoryConverted,
       description: description,
       image: image,
       rating: rating,
@@ -171,7 +171,7 @@ class ProductBack4AppModel {
 
   @override
   String toString() {
-    return 'ProductBack4appModel(name: $name, description: $description, type: $type, rating: $rating, size: $size, image: $image, price: $price, isPromotion: $isPromotion, discount: $discount, tags: $tags)';
+    return 'ProductBack4appModel(name: $name, description: $description, category: $category, rating: $rating, size: $size, image: $image, price: $price, isPromotion: $isPromotion, discount: $discount, tags: $tags)';
   }
 
   @override
@@ -181,7 +181,7 @@ class ProductBack4AppModel {
     return other is ProductBack4AppModel &&
         other.name == name &&
         other.description == description &&
-        other.type == type &&
+        other.category == category &&
         other.rating == rating &&
         other.size == size &&
         other.image == image &&
@@ -195,7 +195,7 @@ class ProductBack4AppModel {
   int get hashCode {
     return name.hashCode ^
         description.hashCode ^
-        type.hashCode ^
+        category.hashCode ^
         rating.hashCode ^
         size.hashCode ^
         image.hashCode ^

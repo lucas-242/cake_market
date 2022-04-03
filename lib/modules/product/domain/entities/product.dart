@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 class Product extends Equatable {
   final String name;
   final String? description;
-  final ProductType _type;
+  final ProductCategory _category;
   final double rating;
   final ProductSize size;
   final String? image;
@@ -15,7 +15,7 @@ class Product extends Equatable {
 
   const Product({
     required this.name,
-    required ProductType type,
+    required ProductCategory category,
     this.rating = 0,
     this.description,
     this.image,
@@ -24,15 +24,15 @@ class Product extends Equatable {
     this.isPromotion = false,
     this.discount,
     this.tags,
-  }) : _type = type;
+  }) : _category = category;
 
-  String get type {
-    switch (_type) {
-      case ProductType.bolo:
+  String get category {
+    switch (_category) {
+      case ProductCategory.bolo:
         return 'Bolo';
-      case ProductType.torta:
+      case ProductCategory.torta:
         return 'Torta';
-      case ProductType.tortaSalgada:
+      case ProductCategory.tortaSalgada:
         return 'Torta Salgada';
       default:
         return '';
@@ -42,7 +42,7 @@ class Product extends Equatable {
   @override
   List<Object?> get props => [
         name,
-        _type,
+        _category,
         rating,
         description,
         image,

@@ -13,5 +13,6 @@ class ProductRepository extends IProductRepository {
   Future<List<Product>> getRecomended() => _datasource.getRecomended();
 
   @override
-  Future<List<Product>> search(String text) => _datasource.search(text);
+  Future<List<Product>> search(ProductFilter filter) =>
+      _datasource.search(filter);
 }

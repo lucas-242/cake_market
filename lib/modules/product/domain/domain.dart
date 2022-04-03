@@ -1,8 +1,10 @@
 export 'datasources/i_product_datasource.dart';
 export 'entities/product.dart';
+export 'entities/product_filter.dart';
+export 'entities/product_filter_order.dart';
 export 'entities/product_size.dart';
 export 'entities/product_tag.dart';
-export 'entities/product_type.dart';
+export 'entities/product_category.dart';
 export 'repositories/i_product_respository.dart';
 export 'usecases/get_products.dart';
 export 'usecases/get_recomended_products.dart';

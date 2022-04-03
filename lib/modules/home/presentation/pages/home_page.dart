@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
   static const orders = [
     Product(
       name: 'Mocca Sugar Birthday Product',
-      type: ProductType.torta,
+      category: ProductCategory.torta,
       size: ProductSize.pequeno,
       description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',
@@ -24,7 +24,7 @@ class HomePage extends StatefulWidget {
     ),
     Product(
       name: 'Mocca Sugar Birthday Product',
-      type: ProductType.torta,
+      category: ProductCategory.torta,
       size: ProductSize.pequeno,
       description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam tortor in libero imperdiet, vel sodales justo tincidunt. Ut venenatis maximus quam vel pulvinar. Sed aliquet turpis sodales vestibulum malesuada. In dolor elit, venenatis vitae ligula quis, pharetra finibus felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vel arcu quam. Praesent sapien justo, auctor eu sapien sit amet, dapibus ornare tortor. Vivamus enim mauris, faucibus at ultrices in, commodo et est. Suspendisse nec laoreet justo, in posuere risus. Etiam magna velit, tincidunt ut arcu at, pellentesque fermentum enim. Praesent convallis ligula a venenatis ornare.',

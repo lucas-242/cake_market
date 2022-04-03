@@ -6,7 +6,7 @@ class SearchProducts {
   SearchProducts({required IProductRepository productRepository})
       : _productRepository = productRepository;
 
-  Future<List<Product>> call(String text) {
-    return _productRepository.search(text);
+  Future<List<Product>> call(ProductFilter filter) {
+    return _productRepository.search(filter);
   }
 }

@@ -17,7 +17,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   Future<void> _onSearchProducts(
       SearchEvent event, Emitter<SearchState> emit) async {
     emit.call(SearchLoading());
-    await _searchProducts.call(event.search).then((products) {
+    var filter = ProductFilter(name: event.search);
+    await _searchProducts.call(filter).then((products) {
       if (products.isEmpty) {
         emit.call(SearchNoData());
       } else {
