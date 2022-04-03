@@ -10,16 +10,15 @@ environment:
 dependencies:
   bloc: ^8.0.1
   carousel_slider: ^4.0.0
-  cloud_firestore: ^3.1.7
   cupertino_icons: ^1.0.2  
   equatable: ^2.0.3
-  firebase_auth: ^3.0.2
-  firebase_core: ^1.5.0
   flow_builder: ^0.0.4
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.0
   get_it: ^7.2.0
+  intl: ^0.17.0
+  parse_server_sdk_flutter: ^3.1.0
   readmore: ^2.1.0
 
 

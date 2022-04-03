@@ -1,1 +1,1 @@
-enum AppTab { home, catalog, profile }
+enum AppTab { home, search, profile }

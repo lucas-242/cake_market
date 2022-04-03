@@ -2,7 +2,7 @@ import 'package:cake/core/models/models.dart';
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/modules/app/app.dart';
 import 'package:cake/modules/home/home.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,35 +18,10 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-
   @override
   Widget build(BuildContext context) {
     SizeConfig(context, kBottomNavigationBarHeight);
 
-    return FutureBuilder(
-        future: _initialization,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Material(
-              child: Center(
-                child: Text(
-                    'Unable to initialize the server \n Não foi possível inicializar o servidor'),
-              ),
-            );
-          } else if (snapshot.connectionState == ConnectionState.done) {
-            return mainApp();
-          } else {
-            return const Material(
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
-        });
-  }
-
-  Widget mainApp() {
     return BlocBuilder<TabBloc, AppTab>(
       builder: (context, activeTab) {
         return Scaffold(
@@ -62,8 +37,8 @@ class _AppShellState extends State<AppShell> {
 
   Widget body(AppTab activeTab) {
     switch (activeTab) {
-      case AppTab.catalog:
-        return Container(color: Colors.grey[500]);
+      case AppTab.search:
+        return const SearchPage();
       case AppTab.profile:
         return Container(color: Colors.green);
       default:
@@ -102,12 +77,12 @@ class AppBottomNavigationBar extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.search),
             label: 'Busca',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Coleção',
+            label: 'Perfil',
           ),
         ],
       ),
