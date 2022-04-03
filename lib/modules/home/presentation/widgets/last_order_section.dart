@@ -1,11 +1,11 @@
 import 'package:cake/core/themes/themes.dart';
-import 'package:cake/modules/cake/cake.dart';
+import 'package:cake/modules/product/product.dart';
 import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
 
 class LastOrderSection extends StatelessWidget {
   final VoidCallback onPressedMore;
-  final List<Cake> orders;
+  final List<Product> orders;
   const LastOrderSection({
     Key? key,
     required this.onPressedMore,

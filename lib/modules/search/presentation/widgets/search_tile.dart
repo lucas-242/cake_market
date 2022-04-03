@@ -1,11 +1,11 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/image_selector/image_selector.dart';
-import 'package:cake/modules/cake/cake.dart';
+import 'package:cake/modules/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class SearchTile extends StatelessWidget {
-  final Cake product;
+  final Product product;
   const SearchTile({Key? key, required this.product}) : super(key: key);
 
   @override

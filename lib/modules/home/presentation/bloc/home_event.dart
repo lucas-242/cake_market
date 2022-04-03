@@ -11,10 +11,10 @@ class InitHomeEvent extends HomeEvent {
   const InitHomeEvent();
 }
 
-class SearchCakeHomeEvent extends HomeEvent {
+class SearchProductHomeEvent extends HomeEvent {
   final String search;
 
-  const SearchCakeHomeEvent(this.search);
+  const SearchProductHomeEvent(this.search);
 
   @override
   List<Object> get props => [search];

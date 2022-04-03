@@ -39,9 +39,9 @@ class _SearchPageState extends State<SearchPage> {
                       return SizedBox(
                         height: SizeConfig.height * 0.8,
                         child: ListView.builder(
-                          itemCount: state.cakes.length,
+                          itemCount: state.products.length,
                           itemBuilder: (context, index) =>
-                              SearchTile(product: state.cakes[index]),
+                              SearchTile(product: state.products[index]),
                         ),
                       );
                     } else if (state is SearchError) {

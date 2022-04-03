@@ -6,6 +6,6 @@ final instance = GetIt.instance;
 Future<void> init() async {
 // Blocs and Cubits
   instance.registerFactory(
-    () => HomeBloc(getRecomendedCakes: instance()),
+    () => HomeBloc(getRecomendedProducts: instance()),
   );
 }

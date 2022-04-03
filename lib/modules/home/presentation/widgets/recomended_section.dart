@@ -1,12 +1,12 @@
 import 'package:cake/core/themes/themes.dart';
-import 'package:cake/modules/cake/cake.dart';
+import 'package:cake/modules/product/product.dart';
 import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
 
 class RecomendedSection extends StatelessWidget {
-  final Function(Cake) onPressedRecomended;
+  final Function(Product) onPressedRecomended;
   final VoidCallback onPressedMore;
-  final List<Cake> recomended;
+  final List<Product> recomended;
   const RecomendedSection({
     Key? key,
     required this.onPressedMore,

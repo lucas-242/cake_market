@@ -1,11 +1,12 @@
 part of 'home_bloc.dart';
 
 abstract class HomeState extends Equatable {
-  final List<Cake> recomended;
-  final List<Cake> orders;
+  final List<Product> recomended;
+  final List<Product> orders;
   final String? errorMessage;
 
-  HomeState({List<Cake>? recomended, List<Cake>? orders, this.errorMessage})
+  HomeState(
+      {List<Product>? recomended, List<Product>? orders, this.errorMessage})
       : recomended = recomended ?? [],
         orders = orders ?? [];
 
@@ -20,12 +21,13 @@ class HomeLoading extends HomeState {}
 class HomeNoData extends HomeState {}
 
 class HomeError extends HomeState {
-  HomeError({List<Cake>? recomended, List<Cake>? orders, errorMessage})
+  HomeError({List<Product>? recomended, List<Product>? orders, errorMessage})
       : super(
             recomended: recomended, orders: orders, errorMessage: errorMessage);
 }
 
 class HomeSuccess extends HomeState {
-  HomeSuccess({required List<Cake> recomended, required List<Cake> orders})
+  HomeSuccess(
+      {required List<Product> recomended, required List<Product> orders})
       : super(recomended: recomended, orders: orders);
 }
