@@ -41,8 +41,6 @@ class NavbarSection extends StatelessWidget {
           RoundedIconButton(
             icon: Icons.add_alert,
             onPressed: () => null,
-            width: DefaultStyle.buttonWidth,
-            height: DefaultStyle.buttonHeight,
           ),
         ],
       ),

@@ -13,7 +13,7 @@ class ImageSelector extends StatelessWidget {
     return SizedBox(
         width: width,
         height: height,
-        child: image != null
+        child: image != null && image != ''
             ? Image.network(image!)
             : Image.asset(AppImages.noImage));
   }
