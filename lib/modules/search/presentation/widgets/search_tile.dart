@@ -16,19 +16,33 @@ class SearchTile extends StatelessWidget {
           image: product.image,
           height: DefaultStyle.buttonHeight,
           width: DefaultStyle.buttonWidth,
+          borderRadius: DefaultStyle.roundedTinyShapeRadius,
         ),
         const SizedBox(width: DefaultStyle.widthSmallSpace),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(product.name),
-            // const SizedBox(height: DefaultStyle.heightTinySpace),
-            Text(product.category),
-            // const SizedBox(height: DefaultStyle.heightTinySpace),
-            Text(NumberFormat.currency(
-              symbol: 'R\$',
-              decimalDigits: 2,
-            ).format(product.price)),
+            Text(
+              product.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: DefaultStyle.heightTinySpace),
+            Text(
+              NumberFormat.currency(
+                symbol: 'R\$',
+                decimalDigits: 2,
+              ).format(product.price),
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ],
         )
       ],

@@ -1,5 +1,6 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/search_bar/search_bar.dart';
+import 'package:cake/modules/search/presentation/widgets/search_result.dart';
 import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,21 @@ class _SearchPageState extends State<SearchPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: DefaultStyle.heightSpace),
+              const Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: DefaultStyle.paddingValue),
+                child: Text(
+                  'Busca',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
               const SizedBox(height: DefaultStyle.heightSpace),
               SearchBar(
                 label: 'Pesquise uma delícia aqui',
@@ -36,20 +51,13 @@ class _SearchPageState extends State<SearchPage> {
                       //TODO: Show types
                       return Container();
                     } else if (state is SearchSuccess) {
-                      return SizedBox(
-                        height: SizeConfig.height * 0.8,
-                        child: ListView.builder(
-                          itemCount: state.products.length,
-                          itemBuilder: (context, index) =>
-                              SearchTile(product: state.products[index]),
-                        ),
-                      );
+                      return SearchResult(products: state.products);
                     } else if (state is SearchError) {
                       return Text(state.errorMessage!);
                     } else if (state is SearchNoData) {
                       return const Text('Não há resultados para a busca');
                     } else if (state is SearchLoading) {
-                      return const CircularProgressIndicator();
+                      return const Center(child: CircularProgressIndicator());
                     } else {
                       return Container();
                     }

@@ -1,4 +1,5 @@
 import 'package:cake/core/themes/themes.dart';
+import 'package:cake/core/widgets/image_selector/image_selector.dart';
 import 'package:cake/modules/product/product.dart';
 import 'package:cake/modules/home/presentation/widgets/text_with_button.dart';
 import 'package:flutter/material.dart';
@@ -45,21 +46,11 @@ class LastOrderSection extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey[500],
-                              borderRadius:
-                                  DefaultStyle.roundedSmallShapeRadius,
-                            ),
-                            child: SizedBox(
-                              width: SizeConfig.width * 0.20,
-                              height: SizeConfig.height * 0.20,
-                            ),
-                            // child: ImageSelector(
-                            //   image: orders[index].image,
-                            //   width: SizeConfig.width * 0.21,
-                            //   height: SizeConfig.height * 0.20,
-                            // ),
+                          ImageSelector(
+                            image: orders[index].image,
+                            width: SizeConfig.width * 0.20,
+                            height: SizeConfig.height * 0.20,
+                            borderRadius: DefaultStyle.roundedSmallShapeRadius,
                           ),
                           const SizedBox(width: DefaultStyle.widthSmallSpace),
                           Expanded(

@@ -5,16 +5,31 @@ class ImageSelector extends StatelessWidget {
   final String? image;
   final double? height;
   final double? width;
-  const ImageSelector({Key? key, required this.image, this.width, this.height})
-      : super(key: key);
+  final BorderRadius? borderRadius;
+  const ImageSelector({
+    Key? key,
+    required this.image,
+    this.width,
+    this.height,
+    this.borderRadius,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: width,
-        height: height,
-        child: image != null && image != ''
-            ? Image.network(image!)
-            : Image.asset(AppImages.noImage));
+    return ClipRRect(
+      borderRadius: borderRadius ?? BorderRadius.zero,
+      child: image != null && image != ''
+          ? Image.network(
+              image!,
+              width: width,
+              height: height,
+            )
+          : Image.asset(
+              AppImages.noImage,
+              fit: BoxFit.fitHeight,
+              width: width,
+              height: height,
+            ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cake/core/themes/themes.dart';
+import 'package:cake/core/widgets/image_selector/image_selector.dart';
 import 'package:cake/core/widgets/star_rating/star_rating.dart';
 import 'package:cake/modules/product/product.dart';
 import 'package:cake/modules/product/presentation/widgets/quantity_buttons_row.dart';
@@ -113,20 +114,13 @@ class _ProductDetailsState extends State<ProductDetails> {
       height: SizeConfig.height * 0.52,
       child: Stack(
         children: [
-          // ImageSelector(
-          //   image: product['image'],
-          //   width: SizeConfig.width,
-          //   height: SizeConfig.height * 0.40,
-          // ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: DefaultStyle.roundedShapeRadius,
-              ),
+            child: ImageSelector(
+              image: widget.product.image,
               width: SizeConfig.width,
-              height: SizeConfig.height * 0.4,
+              height: SizeConfig.height * 0.40,
+              borderRadius: DefaultStyle.roundedShapeRadius,
             ),
           ),
           Positioned(
