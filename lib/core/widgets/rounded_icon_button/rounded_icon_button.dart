@@ -8,6 +8,7 @@ class RoundedIconButton extends StatelessWidget {
   final double? width;
   final Color backgroundColor;
   final Color color;
+  final BorderRadiusGeometry? borderRadius;
 
   const RoundedIconButton({
     Key? key,
@@ -17,6 +18,7 @@ class RoundedIconButton extends StatelessWidget {
     this.width,
     this.backgroundColor = AppColors.accent,
     this.color = AppColors.white,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -29,7 +31,7 @@ class RoundedIconButton extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: backgroundColor,
-          borderRadius: DefaultStyle.roundedTinyShapeRadius,
+          borderRadius: borderRadius ?? DefaultStyle.roundedTinyShapeRadius,
         ),
         child: Icon(icon, color: color),
       ),

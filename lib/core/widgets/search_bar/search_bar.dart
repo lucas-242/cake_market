@@ -66,7 +66,7 @@ class SearchBar extends StatelessWidget {
             const SizedBox(width: DefaultStyle.widthSpace),
             RoundedIconButton(
               icon: Icons.tune,
-              onPressed: () => onTapFilters,
+              onPressed: onTapFilters != null ? onTapFilters! : () {},
             ),
           ]
         ],

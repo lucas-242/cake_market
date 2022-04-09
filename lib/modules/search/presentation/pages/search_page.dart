@@ -38,6 +38,10 @@ class _SearchPageState extends State<SearchPage> {
               const SizedBox(height: DefaultStyle.heightSpace),
               SearchBar(
                 label: 'Pesquise uma delícia aqui',
+                onTapFilters: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FilterPage())),
                 onSubmitted: (String text) =>
                     context.read<SearchBloc>().add(SearchEvent(text)),
               ),
