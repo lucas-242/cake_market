@@ -72,8 +72,12 @@ class ProductBack4AppDatasource extends IProductDatasource {
     }
 
     //* Category filter
-    if (filter.category != null) {
-      mainQuery.whereEqualTo('category', filter.category.toShortString());
+    if (filter.categories != null && filter.categories!.isNotEmpty) {
+      mainQuery.whereContainedIn(
+        'category',
+        filter.categories!.map((e) => e.toShortString()).toList(),
+      );
+      // mainQuery.whereEqualTo('category', filter.categories.toShortString());
     }
 
     //* Price filter

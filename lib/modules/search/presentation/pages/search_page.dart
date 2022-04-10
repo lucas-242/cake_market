@@ -1,5 +1,6 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/search_bar/search_bar.dart';
+import 'package:cake/modules/product/domain/domain.dart';
 import 'package:cake/modules/search/presentation/widgets/search_result.dart';
 import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,11 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  late SearchBloc _searchBloc;
+
   @override
   Widget build(BuildContext context) {
+    _searchBloc = context.read<SearchBloc>();
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -42,8 +46,10 @@ class _SearchPageState extends State<SearchPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const FilterPage())),
-                onSubmitted: (String text) =>
-                    context.read<SearchBloc>().add(SearchEvent(text)),
+                onChange: (String text) =>
+                    _searchBloc.add(ChangeFilterEvent(searchText: text)),
+                onSubmitted: (String text) => _searchBloc
+                    .add(PerformSearchEvent(filter: _searchBloc.state.filter)),
               ),
               const SizedBox(height: DefaultStyle.heightSpace),
               Padding(
@@ -52,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
                     if (state is SearchInitial) {
-                      //TODO: Show types
+                      //TODO: Show categories
                       return Container();
                     } else if (state is SearchSuccess) {
                       return SearchResult(products: state.products);

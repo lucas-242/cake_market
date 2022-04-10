@@ -1,17 +1,17 @@
 import 'package:cake/modules/product/domain/domain.dart';
 
 class ProductFilter {
-  String? name;
-  ProductCategory? category;
-  ProductSize? size;
-  double? rating;
-  double? price;
-  bool? isPromotion;
-  ProductFilterOrder? order;
+  final String? name;
+  final List<ProductCategory>? categories;
+  final ProductSize? size;
+  final double? rating;
+  final double? price;
+  final bool? isPromotion;
+  final ProductFilterOrder? order;
 
-  ProductFilter({
+  const ProductFilter({
     this.name,
-    this.category,
+    this.categories,
     this.size,
     this.rating,
     this.price,
