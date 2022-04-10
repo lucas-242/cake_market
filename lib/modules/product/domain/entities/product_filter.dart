@@ -5,16 +5,16 @@ class ProductFilter {
   final List<ProductCategory>? categories;
   final ProductSize? size;
   final double? rating;
-  final double? price;
+  final int? maxPrice;
   final bool? isPromotion;
-  final ProductFilterOrder? order;
+  final ProductFilterOrder order;
 
   const ProductFilter({
     this.name,
     this.categories,
     this.size,
     this.rating,
-    this.price,
+    this.maxPrice,
     this.isPromotion,
     this.order = ProductFilterOrder.defaultOrder,
   });

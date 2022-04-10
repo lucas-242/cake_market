@@ -10,13 +10,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   SearchBloc({required SearchProducts searchProducts})
       : _searchProducts = searchProducts,
-        super(SearchInitial()) {
+        super(const SearchInitial()) {
     on<PerformSearchEvent>(_onSearchProducts);
     on<ChangeFilterEvent>(_onChangeFilter);
   }
 
   Future<void> _onChangeFilter(
-      ChangeFilterEvent event, Emitter<SearchState> emit) async {
+    ChangeFilterEvent event,
+    Emitter<SearchState> emit,
+  ) async {
     List<ProductCategory> categories = [];
     if (event.category != null) {
       if (state.filter.categories == null || state.filter.categories!.isEmpty) {
@@ -36,10 +38,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       name: event.searchText ?? state.filter.name,
       categories: categories,
       order: event.order ?? state.filter.order,
+      maxPrice: event.price ?? state.filter.maxPrice,
     );
 
     if (state is SearchSuccess) {
       emit.call(SearchSuccess(products: state.products, filter: filter));
+    } else if (state is SearchInitial) {
+      emit.call(SearchInitial(filter: filter));
     } else if (state is SearchNoData) {
       emit.call(SearchNoData(filter: filter));
     } else if (state is SearchError) {

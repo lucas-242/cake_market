@@ -1,6 +1,5 @@
-import 'package:cake/core/extensions/extensions.dart';
+import 'package:cake/core/constants.dart';
 import 'package:cake/core/themes/themes.dart';
-import 'package:cake/modules/product/product.dart';
 import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,29 +12,6 @@ class FilterPage extends StatefulWidget {
 }
 
 class _FilterPageState extends State<FilterPage> {
-  bool _checkOrderIsSelected(
-    ProductFilterOrder? order,
-    ProductFilterOrder orderSelected,
-  ) {
-    if (order != null && order == orderSelected) {
-      return true;
-    }
-
-    return false;
-  }
-
-  bool _checkCategoryIsSelect(
-    List<ProductCategory>? categories,
-    ProductCategory categorySelected,
-  ) {
-    if (categories == null) return false;
-
-    var found = categories.where((element) => element == categorySelected);
-    if (found.isEmpty) return false;
-
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,60 +31,40 @@ class _FilterPageState extends State<FilterPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _getSubtitle('Categorias'),
+                        // const SizedBox(height: DefaultStyle.heightSpace),
+                        // Wrap(
+                        //   direction: Axis.horizontal,
+                        //   runSpacing: 10,
+                        //   spacing: 10,
+                        //   children: _getWrapWIdgets(),
+
+                        // ),
                         const SizedBox(height: DefaultStyle.heightSpace),
-                        GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 10.0,
-                            mainAxisSpacing: 10.0,
-                            childAspectRatio: 2.0,
-                          ),
-                          itemCount: ProductCategory.values.length,
-                          itemBuilder: (context, index) => FilterCategory(
-                            category: ProductCategory.values[index],
-                            isSelected: _checkCategoryIsSelect(
-                              context
-                                  .read<SearchBloc>()
-                                  .state
-                                  .filter
-                                  .categories,
-                              ProductCategory.values[index],
-                            ),
-                            onPressed: (category) => context
-                                .read<SearchBloc>()
-                                .add(ChangeFilterEvent(category: category)),
-                          ),
+                        FilterCategory(
+                          categoriesInFilter: state.filter.categories,
+                          onPressed: (category) => context
+                              .read<SearchBloc>()
+                              .add(ChangeFilterEvent(category: category)),
+                        ),
+                        const SizedBox(height: DefaultStyle.heightSpace),
+                        _getSubtitle('Ordernar por'),
+                        const SizedBox(height: DefaultStyle.heightSpace),
+                        FilterOrder(
+                          orderSelectedInFilter: state.filter.order,
+                          onPressed: (order) => context
+                              .read<SearchBloc>()
+                              .add(ChangeFilterEvent(order: order)),
                         ),
                         const SizedBox(height: DefaultStyle.heightSpace),
                         _getSubtitle('Preço máximo'),
                         const SizedBox(height: DefaultStyle.heightSpace),
-                        const FilterPrice(),
-                        const SizedBox(height: DefaultStyle.heightSpace),
-                        _getSubtitle('Ordernar por'),
-                        const SizedBox(height: DefaultStyle.heightSpace),
-                        GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                          ),
-                          itemCount: ProductFilterOrder.values.length,
-                          itemBuilder: (context, index) => FilterOrder(
-                            order: ProductFilterOrder.values[index],
-                            isSelected: _checkOrderIsSelected(
-                              context.read<SearchBloc>().state.filter.order,
-                              ProductFilterOrder.values[index],
-                            ),
-                            onPressed: (order) => context
-                                .read<SearchBloc>()
-                                .add(ChangeFilterEvent(order: order)),
-                          ),
+                        FilterPrice(
+                          priceInFilter:
+                              state.filter.maxPrice ?? Constants.filterMaxPrice,
+                          onPressed: (int value) => context
+                              .read<SearchBloc>()
+                              .add(ChangeFilterEvent(price: value)),
                         ),
-                        // const SizedBox(height: DefaultStyle.heightSpace),
                       ],
                     ),
                   ),
@@ -120,6 +76,26 @@ class _FilterPageState extends State<FilterPage> {
       ),
     );
   }
+
+  // List<Widget> _getWrapWIdgets() {
+  //   List<Widget> response = [];
+
+  //   ProductCategory.values.asMap().forEach((index, element) {
+  //     response.add(
+  //       FilterCategory(
+  //         category: ProductCategory.values[index],
+  //         isSelected: _checkCategoryIsSelect(
+  //           context.read<SearchBloc>().state.filter.categories,
+  //           ProductCategory.values[index],
+  //         ),
+  //         onPressed: (category) => context
+  //             .read<SearchBloc>()
+  //             .add(ChangeFilterEvent(category: category)),
+  //       ),
+  //     );
+  //   });
+  //   return response;
+  // }
 
   Widget _getSubtitle(String text) {
     return Text(

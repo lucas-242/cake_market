@@ -15,7 +15,9 @@ abstract class SearchState extends Equatable {
   List<Object?> get props => [products, filter, errorMessage];
 }
 
-class SearchInitial extends SearchState {}
+class SearchInitial extends SearchState {
+  const SearchInitial({ProductFilter? filter}) : super(filter: filter);
+}
 
 class SearchLoading extends SearchState {}
 

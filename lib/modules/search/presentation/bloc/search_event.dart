@@ -17,7 +17,7 @@ class ChangeFilterEvent extends SearchEvent {
   final ProductCategory? category;
   final double? rating;
   final ProductSize? size;
-  final double? price;
+  final int? price;
   final bool? isPromotion;
   final ProductFilterOrder? order;
 

@@ -80,9 +80,9 @@ class ProductBack4AppDatasource extends IProductDatasource {
       // mainQuery.whereEqualTo('category', filter.categories.toShortString());
     }
 
-    //* Price filter
-    if (filter.price != null && filter.price! > 0) {
-      mainQuery.whereLessThanOrEqualTo('price', filter.price);
+    //* Max Price filter
+    if (filter.maxPrice != null && filter.maxPrice! > 0) {
+      mainQuery.whereLessThanOrEqualTo('price', filter.maxPrice);
     }
 
     //* Rating filter
@@ -101,9 +101,8 @@ class ProductBack4AppDatasource extends IProductDatasource {
     }
 
     //* Order
-    if (filter.order != null &&
-        filter.order != ProductFilterOrder.defaultOrder) {
-      switch (filter.order!) {
+    if (filter.order != ProductFilterOrder.defaultOrder) {
+      switch (filter.order) {
         case ProductFilterOrder.asc:
           mainQuery.orderByAscending('name');
           break;
