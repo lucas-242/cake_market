@@ -14,7 +14,7 @@ class FilterNavbar extends StatelessWidget implements PreferredSizeWidget {
         height: SizeConfig.height * 0.2,
         child: Padding(
           padding: const EdgeInsets.only(
-              top: 35,
+              top: 30,
               left: DefaultStyle.paddingValue / 2,
               right: DefaultStyle.paddingValue),
           child: Row(
@@ -95,5 +95,5 @@ class FilterNavbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(SizeConfig.height * 0.07);
+  Size get preferredSize => Size.fromHeight(SizeConfig.height * 0.08);
 }

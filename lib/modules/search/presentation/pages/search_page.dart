@@ -1,6 +1,5 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/search_bar/search_bar.dart';
-import 'package:cake/modules/product/domain/domain.dart';
 import 'package:cake/modules/search/presentation/widgets/search_result.dart';
 import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';

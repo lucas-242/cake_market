@@ -65,6 +65,7 @@ class _FilterPageState extends State<FilterPage> {
                               .read<SearchBloc>()
                               .add(ChangeFilterEvent(price: value)),
                         ),
+                        const SizedBox(height: DefaultStyle.heightSpace),
                       ],
                     ),
                   ),
