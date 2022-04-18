@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 
 class SearchResult extends StatelessWidget {
   final List<Product> products;
-  const SearchResult({Key? key, required this.products}) : super(key: key);
+  final Function(Product) onPressed;
+  const SearchResult({
+    Key? key,
+    required this.products,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,13 @@ class SearchResult extends StatelessWidget {
       height: SizeConfig.height * 0.8,
       child: ListView.builder(
         itemCount: products.length,
-        itemBuilder: (context, index) => SearchTile(product: products[index]),
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.only(bottom: DefaultStyle.heightSmallSpace),
+          child: SearchTile(
+            product: products[index],
+            onPressed: onPressed,
+          ),
+        ),
       ),
     );
   }

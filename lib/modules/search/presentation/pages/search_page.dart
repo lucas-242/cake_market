@@ -1,5 +1,6 @@
 import 'package:cake/core/themes/themes.dart';
 import 'package:cake/core/widgets/search_bar/search_bar.dart';
+import 'package:cake/modules/product/presentation/pages/product_details_page.dart';
 import 'package:cake/modules/search/presentation/widgets/search_result.dart';
 import 'package:cake/modules/search/search.dart';
 import 'package:flutter/material.dart';
@@ -57,10 +58,31 @@ class _SearchPageState extends State<SearchPage> {
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
                     if (state is SearchInitial) {
-                      //TODO: Show categories
-                      return Container();
+                      return FastSearchCategories(
+                        onPressed: (category) {
+                          _searchBloc.add(ChangeFilterEvent(
+                            category: category,
+                            isPromotion: false,
+                            order: null,
+                            price: null,
+                            rating: null,
+                            searchText: null,
+                            size: null,
+                          ));
+                          _searchBloc.add(PerformSearchEvent(
+                              filter: _searchBloc.state.filter));
+                        },
+                      );
                     } else if (state is SearchSuccess) {
-                      return SearchResult(products: state.products);
+                      return SearchResult(
+                        products: state.products,
+                        onPressed: (product) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductDetails(product: product)),
+                        ),
+                      );
                     } else if (state is SearchError) {
                       return Text(state.errorMessage!);
                     } else if (state is SearchNoData) {

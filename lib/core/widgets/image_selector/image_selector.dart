@@ -6,12 +6,14 @@ class ImageSelector extends StatelessWidget {
   final double? height;
   final double? width;
   final BorderRadius? borderRadius;
+  final bool isNetworkImage;
   const ImageSelector({
     Key? key,
     required this.image,
     this.width,
     this.height,
     this.borderRadius,
+    this.isNetworkImage = true,
   }) : super(key: key);
 
   @override
@@ -19,11 +21,18 @@ class ImageSelector extends StatelessWidget {
     return ClipRRect(
       borderRadius: borderRadius ?? BorderRadius.zero,
       child: image != null && image != ''
-          ? Image.network(
-              image!,
-              width: width,
-              height: height,
-            )
+          ? isNetworkImage
+              ? Image.network(
+                  image!,
+                  width: width,
+                  height: height,
+                )
+              : Image.asset(
+                  image!,
+                  fit: BoxFit.cover,
+                  width: width,
+                  height: height,
+                )
           : Image.asset(
               AppImages.noImage,
               fit: BoxFit.fitHeight,
