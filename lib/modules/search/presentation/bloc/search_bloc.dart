@@ -62,11 +62,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       } else {
         emit.call(SearchSuccess(products: products, filter: filter));
       }
-    }).catchError(
-      (error) => emit.call(SearchError(
+    }).catchError((error) {
+      emit.call(SearchError(
         errorMessage: 'Erro ao efetuar a busca',
         filter: filter,
-      )),
-    );
+      ));
+    });
   }
 }

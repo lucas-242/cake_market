@@ -6,9 +6,5 @@ part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  final GetProducts _getProducts;
-
-  ProductBloc({required GetProducts getProducts})
-      : _getProducts = getProducts,
-        super(ProductInitial());
+  ProductBloc() : super(ProductInitial());
 }

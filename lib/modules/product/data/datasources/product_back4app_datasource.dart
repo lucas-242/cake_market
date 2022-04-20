@@ -1,4 +1,6 @@
+import 'package:cake/core/constants.dart';
 import 'package:cake/core/extensions/extensions.dart';
+import 'package:cake/core/models/models.dart';
 import 'package:cake/modules/product/product.dart';
 import 'package:cake/modules/product/data/models/product_back4app_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -7,33 +9,31 @@ class ProductBack4AppDatasource extends IProductDatasource {
   ProductBack4AppDatasource();
 
   @override
-  Future<List<Product>> get() async {
-    QueryBuilder<ParseObject> query =
-        QueryBuilder<ParseObject>(ParseObject('Product'))
-          ..includeObject(['tags']);
+  Future<List<Product>> getRecommended() async {
+    try {
+      QueryBuilder<ParseObject> query =
+          QueryBuilder<ParseObject>(ParseObject('Product'))
+            ..includeObject(['tags'])
+            ..orderByDescending('rating')
+            ..setLimit(Constants.recommendedProductsLimit);
 
-    final ParseResponse apiResponse = await query.query();
-    return _checkApiResponse(apiResponse);
-  }
-
-  @override
-  Future<List<Product>> getRecomended() async {
-    QueryBuilder<ParseObject> query =
-        QueryBuilder<ParseObject>(ParseObject('Product'))
-          ..includeObject(['tags'])
-          ..orderByDescending('rating')
-          ..setLimit(5);
-
-    final ParseResponse apiResponse = await query.query();
-    return _checkApiResponse(apiResponse);
+      final ParseResponse apiResponse = await query.query();
+      return _checkApiResponse(apiResponse);
+    } catch (error) {
+      throw ServerException('Error to get recommended products: $error');
+    }
   }
 
   @override
   Future<List<Product>> search(ProductFilter filter) async {
-    var mainQuery = _getFilterQuery(filter);
+    try {
+      var mainQuery = _getFilterQuery(filter);
 
-    final ParseResponse apiResponse = await mainQuery.query();
-    return _checkApiResponse(apiResponse);
+      final ParseResponse apiResponse = await mainQuery.query();
+      return _checkApiResponse(apiResponse);
+    } catch (error) {
+      throw ServerException('Error to search products: $error');
+    }
   }
 
   /// Checks the [apiResponse], get the list and converts to Product entity
@@ -43,9 +43,11 @@ class ProductBack4AppDatasource extends IProductDatasource {
           .map((e) => ProductBack4AppModel.fromParseObject(e).toProduct())
           .toList();
       return response;
-    } else {
-      return [];
+    } else if (!apiResponse.success) {
+      throw ServerException('Status code error: ${apiResponse.error!.code}');
     }
+
+    return [];
   }
 
   QueryBuilder<ParseObject> _getFilterQuery(ProductFilter filter) {

@@ -4,6 +4,7 @@ extension EnumExtension on Enum? {
       return '';
     }
 
+    // ignore: unnecessary_this
     return this.toString().split('.').last;
   }
 }

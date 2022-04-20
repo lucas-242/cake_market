@@ -6,6 +6,5 @@ export 'entities/product_size.dart';
 export 'entities/product_tag.dart';
 export 'entities/product_category.dart';
 export 'repositories/i_product_respository.dart';
-export 'usecases/get_products.dart';
 export 'usecases/get_recomended_products.dart';
 export 'usecases/search_products.dart';

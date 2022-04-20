@@ -8,12 +8,10 @@ final instance = GetIt.instance;
 Future<void> init() async {
 // Blocs and Cubits
   instance.registerFactory(
-    () => ProductBloc(getProducts: instance()),
+    () => ProductBloc(),
   );
 
   // Use Cases
-  instance
-      .registerLazySingleton(() => GetProducts(productRepository: instance()));
   instance.registerLazySingleton(
       () => GetRecomendedProducts(productRepository: instance()));
   instance.registerLazySingleton(
