@@ -154,9 +154,9 @@ class ProductBack4AppModel {
       tags: tags != null && tags!.isNotEmpty
           ? tags!
               .map((e) => ProductTag(
+                    id: e.objectId ?? '',
                     name: e.name,
                     createdAt: e.createdAt,
-                    objectId: e.objectId,
                     updatedAt: e.updatedAt,
                   ))
               .toList()

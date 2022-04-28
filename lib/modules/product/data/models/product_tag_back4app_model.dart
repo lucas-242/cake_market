@@ -1,12 +1,13 @@
 import 'dart:convert';
 
+import 'package:cake/modules/product/product.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class ProductTagBack4AppModel {
-  String? objectId;
-  DateTime? updatedAt;
-  DateTime? createdAt;
-  String name;
+  final String? objectId;
+  final DateTime? updatedAt;
+  final DateTime? createdAt;
+  final String name;
 
   ProductTagBack4AppModel({
     this.objectId,
@@ -38,6 +39,23 @@ class ProductTagBack4AppModel {
     };
   }
 
+  ParseObject toParse() {
+    return ParseObject('ProductTag')
+      ..set('objectId', objectId)
+      ..set('name', name)
+      ..set('updatedAt', updatedAt)
+      ..set('createdAt', createdAt);
+  }
+
+  ProductTag toProductTag() {
+    return ProductTag(
+      id: objectId,
+      name: name,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    );
+  }
+
   factory ProductTagBack4AppModel.fromMap(Map<String, dynamic> map) {
     return ProductTagBack4AppModel(
       objectId: map['objectId'],
@@ -60,6 +78,15 @@ class ProductTagBack4AppModel {
     );
   }
 
+  factory ProductTagBack4AppModel.fromProductTag(ProductTag tag) {
+    return ProductTagBack4AppModel(
+      objectId: tag.id,
+      name: tag.name,
+      createdAt: tag.createdAt,
+      updatedAt: tag.updatedAt,
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
   factory ProductTagBack4AppModel.fromJson(String source) =>
@@ -67,7 +94,7 @@ class ProductTagBack4AppModel {
 
   @override
   String toString() {
-    return 'ProductTagParse(objectId: $objectId, updatedAt: $updatedAt, createdAt: $createdAt, name: $name)';
+    return 'ProductTagBack4AppModel(objectId: $objectId, updatedAt: $updatedAt, createdAt: $createdAt, name: $name)';
   }
 
   @override

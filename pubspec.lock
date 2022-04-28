@@ -507,7 +507,7 @@ packages:
     source: hosted
     version: "1.0.4"
   parse_server_sdk:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: parse_server_sdk
       url: "https://pub.dartlang.org"

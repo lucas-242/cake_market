@@ -28,6 +28,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
   mockito: ^5.1.0
+  parse_server_sdk: ^3.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,11 +1,11 @@
 class ProductTag {
-  String? objectId;
-  DateTime? updatedAt;
-  DateTime? createdAt;
-  String name;
+  final String? id;
+  final DateTime? updatedAt;
+  final DateTime? createdAt;
+  final String name;
 
   ProductTag({
-    this.objectId,
+    this.id = '',
     this.createdAt,
     this.updatedAt,
     required this.name,
