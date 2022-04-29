@@ -20,6 +20,8 @@ class HomeLoading extends HomeState {}
 
 class HomeNoData extends HomeState {}
 
+class HomeRefresh extends HomeState {}
+
 class HomeError extends HomeState {
   HomeError({List<Product>? recomended, List<Product>? orders, errorMessage})
       : super(

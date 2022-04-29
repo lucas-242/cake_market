@@ -11,6 +11,10 @@ class InitHomeEvent extends HomeEvent {
   const InitHomeEvent();
 }
 
+class RefreshHomeEvent extends HomeEvent {
+  const RefreshHomeEvent();
+}
+
 class SearchProductHomeEvent extends HomeEvent {
   final String search;
 

@@ -43,44 +43,54 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const NavbarSection(),
-              const SizedBox(height: DefaultStyle.heightSpace),
-              //* Height should be smaller to compensate the button padding
-              const SizedBox(height: DefaultStyle.heightSmallSpace),
-              BlocBuilder<HomeBloc, HomeState>(
-                builder: (context, state) {
-                  if (state is HomeError) {
-                    return Text(state.errorMessage!);
-                  } else if (state is HomeNoData) {
-                    return const Text('Não há dados');
-                  } else if (state is HomeInitial) {
-                    context.read<HomeBloc>().add(const InitHomeEvent());
-                    return Container();
-                  } else if (state is HomeLoading) {
-                    return const CircularProgressIndicator();
-                  } else {
-                    return RecomendedSection(
-                      onPressedRecomended: (product) => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductDetails(product: product))),
-                      onPressedMore: () => print('aaaainn'),
-                      recomended: state.recomended,
-                    );
-                  }
-                },
-              ),
-              //* Height should be smaller to compensate the button padding
-              const SizedBox(height: DefaultStyle.heightSmallSpace),
-              LastOrderSection(
-                onPressedMore: () => print('aaaaaaeeenn'),
-                orders: HomePage.orders,
-              ),
-            ],
+        child: RefreshIndicator(
+          onRefresh: () async {
+            BlocProvider.of<HomeBloc>(context).add(const RefreshHomeEvent());
+          },
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                const NavbarSection(),
+                const SizedBox(height: DefaultStyle.heightSpace),
+                Column(
+                  children: [
+                    //* Height should be smaller to compensate the button padding
+                    const SizedBox(height: DefaultStyle.heightSmallSpace),
+                    BlocBuilder<HomeBloc, HomeState>(
+                      builder: (context, state) {
+                        if (state is HomeError) {
+                          return Text(state.errorMessage!);
+                        } else if (state is HomeNoData) {
+                          return const Text('Não há dados');
+                        } else if (state is HomeInitial) {
+                          context.read<HomeBloc>().add(const InitHomeEvent());
+                          return Container();
+                        } else if (state is HomeLoading) {
+                          return const CircularProgressIndicator();
+                        } else {
+                          return RecomendedSection(
+                            onPressedRecomended: (product) => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProductDetails(product: product))),
+                            onPressedMore: () => print('aaaainn'),
+                            recomended: state.recomended,
+                          );
+                        }
+                      },
+                    ),
+                    //* Height should be smaller to compensate the button padding
+                    const SizedBox(height: DefaultStyle.heightSmallSpace),
+                    LastOrderSection(
+                      onPressedMore: () => print('aaaaaaeeenn'),
+                      orders: HomePage.orders,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
