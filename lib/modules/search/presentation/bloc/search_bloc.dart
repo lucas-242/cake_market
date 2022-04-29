@@ -19,37 +19,36 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     ChangeFilterEvent event,
     Emitter<SearchState> emit,
   ) async {
-    List<ProductCategory> categories = [];
-    if (event.category != null) {
-      if (state.filter.categories == null || state.filter.categories!.isEmpty) {
-        categories.add(event.category!);
-      } else {
-        categories = List.from(state.filter.categories!);
-        var indexToRemove = categories.indexOf(event.category!);
-        if (indexToRemove > -1) {
-          categories.removeAt(indexToRemove);
-        } else {
-          categories.add(event.category!);
-        }
-      }
-    }
+    var filter = _setFilter(event);
 
-    var filter = ProductFilter(
+    emit.call(SearchStateFactory().chooseStateAcordingFilter(
+      state: state,
+      filter: filter,
+      category: event.category,
+    ));
+  }
+
+  ProductFilter _setFilter(ChangeFilterEvent event) {
+    return ProductFilter(
       name: event.searchText ?? state.filter.name,
-      categories: categories,
+      categories: _setFilterCategories(event.category),
       order: event.order ?? state.filter.order,
       maxPrice: event.price ?? state.filter.maxPrice,
     );
+  }
 
-    if (state is SearchSuccess) {
-      emit.call(SearchSuccess(products: state.products, filter: filter));
-    } else if (state is SearchInitial) {
-      emit.call(SearchInitial(filter: filter));
-    } else if (state is SearchNoData) {
-      emit.call(SearchNoData(filter: filter));
-    } else if (state is SearchError) {
-      emit.call(SearchError(errorMessage: state.errorMessage!, filter: filter));
+  List<ProductCategory> _setFilterCategories(ProductCategory? category) {
+    List<ProductCategory> categories = [];
+    if (category != null) {
+      categories = List.from(state.filter.categories ?? []);
+      var indexFound = categories.indexOf(category);
+      if (indexFound == -1) {
+        categories.add(category);
+      } else {
+        categories.removeAt(indexFound);
+      }
     }
+    return categories;
   }
 
   Future<void> _onSearchProducts(
