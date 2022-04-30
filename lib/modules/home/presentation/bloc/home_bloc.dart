@@ -14,17 +14,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onInit(HomeEvent event, Emitter<HomeState> emit) async {
-    emit.call(HomeLoading());
+    emit(HomeLoading());
     await _getRecommendedProducts()
         .then((products) =>
-            emit.call(HomeSuccess(recomended: products, orders: const [])))
-        .catchError(
-            (error) => emit.call(HomeError(errorMessage: error.message)));
+            emit(HomeSuccess(recomended: products, orders: const [])))
+        .catchError((error) => emit(HomeError(errorMessage: error.message)));
   }
 
   Future<List<Product>> _getRecommendedProducts() async {
-    return await _getRecomendedProducts
-        .call()
+    return await _getRecomendedProducts()
         .then((products) => products)
         .catchError((error) => error);
   }

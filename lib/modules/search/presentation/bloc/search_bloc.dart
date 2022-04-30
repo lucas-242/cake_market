@@ -21,7 +21,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) async {
     var filter = _setFilter(event);
 
-    emit.call(SearchStateFactory().chooseStateAcordingFilter(
+    emit(SearchStateFactory().chooseStateAcordingFilter(
       state: state,
       filter: filter,
       category: event.category,
@@ -54,15 +54,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   Future<void> _onSearchProducts(
       PerformSearchEvent event, Emitter<SearchState> emit) async {
     var filter = event.filter;
-    emit.call(SearchLoading());
-    await _searchProducts.call(filter).then((products) {
+    emit(SearchLoading());
+    await _searchProducts(filter).then((products) {
       if (products.isEmpty) {
-        emit.call(SearchNoData(filter: filter));
+        emit(SearchNoData(filter: filter));
       } else {
-        emit.call(SearchSuccess(products: products, filter: filter));
+        emit(SearchSuccess(products: products, filter: filter));
       }
     }).catchError((error) {
-      emit.call(SearchError(
+      emit(SearchError(
         errorMessage: 'Erro ao efetuar a busca',
         filter: filter,
       ));
